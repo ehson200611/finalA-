@@ -1,0 +1,70 @@
+from django.core.management.base import BaseCommand
+from home_page.models import InfoSwiperItem
+
+data = [
+    {
+        "id": 1,
+        "title": {
+            "ru": "Разговорные клубы и практические занятия",
+            "en": "Speaking Clubs and Practical Classes",
+            "tj": "Клубҳои суҳбат ва дарсҳои амалӣ"
+        },
+        "description": {
+            "ru": "Посещайте еженедельные speaking club и практические уроки от A Plus, чтобы улучшить свой английский и применять его в реальных ситуациях.",
+            "en": "Attend weekly speaking clubs and practical lessons from A Plus to improve your English and use it in real situations.",
+            "tj": "Дар клубҳои ҳафтаинаи суҳбат ва дарсҳои амалии A Plus иштирок кунед, то забони англисиатонро беҳтар кунед ва онро дар вазъиятҳои воқеӣ истифода баред."
+        },
+        "image": "/imagesVacancy/photo_2025-09-25_20-56-07.jpg"
+    },
+    {
+        "id": 2,
+        "title": {
+            "ru": "Овладей английским языком вместе с нами!",
+            "en": "Master English with Us!",
+            "tj": "Забони англисиро бо мо омӯзед!"
+        },
+        "description": {
+            "ru": "Сегодня знание английского — ключ к успешной карьере и образованию.",
+            "en": "Today, knowledge of English is the key to a successful career and education.",
+            "tj": "Имрӯз дониши забони англисӣ калиди касб ва таҳсили муваффақ аст."
+        },
+        "image": "/imagesVacancy/photo_2025-09-25_20-56-23.jpg"
+    },
+    {
+        "id": 3,
+        "title": {
+            "ru": "Выучи английский язык всего за 1 год!",
+            "en": "Learn English in Just 1 Year!",
+            "tj": "Забони англисиро танҳо дар 1 сол омӯзед!"
+        },
+        "description": {
+            "ru": "Освойте разговорный и профессиональный английский в A Plus от 4 месяцев до 1 года.",
+            "en": "Master conversational and professional English at A Plus from 4 months to 1 year.",
+            "tj": "Забони англисии гуфтугӯӣ ва касбиро дар A Plus аз 4 моҳ то 1 сол омӯзед."
+        },
+        "image": "/imagesVacancy/photo_2025-09-25_20-56-26.jpg"
+    }
+]
+
+class Command(BaseCommand):
+    help = "Seed InfoSwiperItem data"
+
+    def handle(self, *args, **options):
+        for i, item_data in enumerate(data, start=1):
+            item, created = InfoSwiperItem.objects.update_or_create(
+                id=item_data["id"],
+                defaults={
+                    "order": i,
+                    "title_ru": item_data["title"]["ru"],
+                    "title_en": item_data["title"]["en"],
+                    "title_tj": item_data["title"]["tj"],
+                    "description_ru": item_data["description"]["ru"],
+                    "description_en": item_data["description"]["en"],
+                    "description_tj": item_data["description"]["tj"],
+                    "background_image": item_data["image"],
+                }
+            )
+            if created:
+                self.stdout.write(self.style.SUCCESS(f"Created InfoSwiperItem {item.id}"))
+            else:
+                self.stdout.write(self.style.SUCCESS(f"Updated InfoSwiperItem {item.id}"))

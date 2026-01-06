@@ -1,0 +1,92 @@
+═══════════════════════════════════════════════════════════════
+  ИНСТРУКЦИЯ ПО УСТАНОВКЕ SSL СЕРТИФИКАТОВ ДЛЯ APLUS.TJ
+═══════════════════════════════════════════════════════════════
+
+ШАГ 1: СОЗДАНИЕ ДИРЕКТОРИИ
+───────────────────────────
+sudo mkdir -p /etc/nginx/ssl
+
+
+ШАГ 2: СОХРАНЕНИЕ ПРИВАТНОГО КЛЮЧА
+───────────────────────────────────
+sudo nano /etc/nginx/ssl/aplus.tj.key
+
+Скопируйте содержимое из файла:
+  nginx/ssl/aplus.tj.key.txt
+
+Или выполните:
+sudo cp /path/to/nginx/ssl/aplus.tj.key.txt /etc/nginx/ssl/aplus.tj.key
+
+
+ШАГ 3: СОХРАНЕНИЕ СЕРТИФИКАТА
+──────────────────────────────
+sudo nano /etc/nginx/ssl/aplus.tj.crt
+
+Скопируйте содержимое из файла:
+  nginx/ssl/aplus.tj.crt.txt
+
+Или выполните:
+sudo cp /path/to/nginx/ssl/aplus.tj.crt.txt /etc/nginx/ssl/aplus.tj.crt
+
+
+ШАГ 4: УСТАНОВКА ПРАВ ДОСТУПА
+──────────────────────────────
+sudo chmod 600 /etc/nginx/ssl/aplus.tj.key
+sudo chmod 644 /etc/nginx/ssl/aplus.tj.crt
+sudo chown root:root /etc/nginx/ssl/aplus.tj.key
+sudo chown root:root /etc/nginx/ssl/aplus.tj.crt
+
+
+ШАГ 5: ПРОВЕРКА КОНФИГУРАЦИИ NGINX
+────────────────────────────────────
+sudo nginx -t
+
+Если всё в порядке, вы увидите:
+  nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+  nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+
+ШАГ 6: ПЕРЕЗАПУСК NGINX
+────────────────────────
+sudo systemctl restart nginx
+
+
+ШАГ 7: ПРОВЕРКА РАБОТЫ
+───────────────────────
+Откройте в браузере:
+  https://aplus.tj
+  https://www.aplus.tj
+
+Или проверьте через curl:
+  curl -I https://aplus.tj
+
+
+═══════════════════════════════════════════════════════════════
+  АВТОМАТИЧЕСКАЯ УСТАНОВКА (АЛЬТЕРНАТИВА)
+═══════════════════════════════════════════════════════════════
+
+Если файлы aplus.tj.key и aplus.tj.crt уже находятся в директории
+nginx/ssl/, выполните:
+
+cd /path/to/nginx
+bash install_ssl.sh
+
+Скрипт автоматически:
+  ✓ Создаст директорию /etc/nginx/ssl
+  ✓ Скопирует сертификаты
+  ✓ Установит правильные права
+  ✓ Проверит конфигурацию
+
+
+═══════════════════════════════════════════════════════════════
+  ВАЖНО
+═══════════════════════════════════════════════════════════════
+
+✓ Приватный ключ должен быть доступен только root (chmod 600)
+✓ Сертификат действителен до: 2026-10-21
+✓ Домен: aplus.tj и www.aplus.tj
+✓ После установки все HTTP запросы будут перенаправляться на HTTPS
+
+
+═══════════════════════════════════════════════════════════════
+

@@ -1,0 +1,86 @@
+[
+    {
+      "id": "2",
+      "image": "/imagesVacancy/1366-2.webp",
+      "title": {
+        "ru": "Дети от 8 до 10 лет уровень Let's go",
+        "en": "Children from 8 to 10 years Let's go level",
+        "tj": "Курси Let's go барои кӯдакони аз 8 то 10 сола"
+      },
+      "description": {
+        "ru": "Let's go/Round up курс английского языка. Подготовка ребенка к изучению английского языка. Чтение и письмо, базовый разговорный",
+        "en": "Let's go/Round up English course. Preparing children for learning English. Reading and writing, basic conversation",
+        "tj": "Курси забони англисӣ Let's go/Round up. Омода кардани кӯдак барои омӯзиши забони англисӣ. Хондан ва навиштан, асосҳои гуфтугӯ"
+      }
+    },
+    {
+      "id": "3",
+      "image": "/imagesVacancy/1366-3.webp",
+      "title": {
+        "ru": "Стандартные курсы - New American Headway",
+        "en": "Standard courses - New American Headway",
+        "tj": "Курсҳои стандартӣ - New American Headway"
+      },
+      "description": {
+        "ru": "Углубленное изучения языка. Каждый курс длиться 60 академических часов (5 месяцев)",
+        "en": "In-depth language learning. Each course lasts 60 academic hours (5 months)",
+        "tj": "Омӯзиши чуқури забон. Ҳар курс 60 соати академӣ (5 моҳ) давом мекунад"
+      }
+    },
+    {
+      "id": "4",
+      "image": "/imagesVacancy/1366-4.webp",
+      "title": {
+        "ru": "Курсы TOEFL/IELTS",
+        "en": "TOEFL/IELTS courses",
+        "tj": "Курсҳои TOEFL/IELTS"
+      },
+      "description": {
+        "ru": "Интенсивный и полуинтенсивный курс/подготовка для сдачи международных экзаменов",
+        "en": "Intensive and semi-intensive course/preparation for international exams",
+        "tj": "Курси интенсивӣ ва ним-интенсивӣ/тайёрӣ барои супоридани имтиҳонҳои байналмилалӣ"
+      }
+    },
+    {
+      "id": "5",
+      "image": "/imagesVacancy/1366-5.webp",
+      "title": {
+        "ru": "VIP и Индивидуальные занятия",
+        "en": "VIP and Individual lessons",
+        "tj": "Дарсҳои VIP ва Индивидуалӣ"
+      },
+      "description": {
+        "ru": "Для тех, кто хочет быстро и эффективно изучить язык",
+        "en": "For those who want to learn the language quickly and effectively",
+        "tj": "Барои касоне, ки мехоҳанд забонро зуд ва самаранок омӯзанд"
+      }
+    },
+    {
+      "id": "6",
+      "image": "/imagesVacancy/1366-6.webp",
+      "title": {
+        "ru": "Персонализированные курсы",
+        "en": "Personalized courses",
+        "tj": "Курсҳои фардӣ"
+      },
+      "description": {
+        "ru": "Английский для бизнеса, медицины, экономики и финансов и т.д",
+        "en": "English for business, medicine, economics and finance, etc.",
+        "tj": "Забони англисӣ барои тиҷорат, тиб, иқтисод ва молия ва ғайра"
+      }
+    },
+    {
+      "id": "1",
+      "image": "/imagesVacancy/1366-1.webp",
+      "title": {
+        "ru": "Курсы русского языка ",
+        "en": "Russian Language Course ",
+        "tj": "Курси забони русӣ дар "
+      },
+      "description": {
+        "ru": "Курсы русского языка с гарантией 100%\nГарантируем результат или вернем деньги",
+        "en": "Russian language course with a 100% guarantee\nWe guarantee results or refund your money",
+        "tj": "Курси забони русӣ бо кафолати 100%\nМо натиҷаро кафолат медиҳем ё пулатонро бармегардонем"
+      }
+    }
+  ]

@@ -1,0 +1,122 @@
+[
+  {
+    "question": "I wish I __ more time to travel.",
+    "options": ["have", "had", "will have", "having"],
+    "correctAnswer": 1,
+    "explanation": "Past simple in 'wish' for unreal present"
+  },
+  {
+    "question": "She suggested __ to the cinema together.",
+    "options": ["go", "going", "to go", "gone"],
+    "correctAnswer": 1,
+    "explanation": "'suggest' is followed by gerund"
+  },
+  {
+    "question": "They will be late unless they __ now.",
+    "options": ["leave", "leaves", "left", "leaving"],
+    "correctAnswer": 0,
+    "explanation": "First conditional: unless + present simple"
+  },
+  {
+    "question": "I don’t mind __ early on Saturdays.",
+    "options": ["wake", "waking", "to wake", "woke"],
+    "correctAnswer": 1,
+    "explanation": "'don’t mind' is followed by gerund"
+  },
+  {
+    "question": "He can’t have __ the meeting; he was abroad.",
+    "options": ["missed", "miss", "missing", "misses"],
+    "correctAnswer": 0,
+    "explanation": "Modal perfect: can't have + past participle"
+  },
+  {
+    "question": "It’s necessary that she __ on time.",
+    "options": ["is", "be", "was", "been"],
+    "correctAnswer": 1,
+    "explanation": "Subjunctive mood: necessary that + base verb"
+  },
+  {
+    "question": "I am looking forward to __ you next week.",
+    "options": ["see", "seeing", "saw", "seen"],
+    "correctAnswer": 1,
+    "explanation": "'look forward to' is followed by gerund"
+  },
+  {
+    "question": "He is used to __ early in the morning.",
+    "options": ["wake", "waking", "to wake", "to waking"],
+    "correctAnswer": 3,
+    "explanation": "'be used to' is followed by gerund"
+  },
+  {
+    "question": "I would rather you __ here.",
+    "options": ["stay", "stayed", "staying", "stays"],
+    "correctAnswer": 1,
+    "explanation": "'would rather' + past simple for advice"
+  },
+  {
+    "question": "If I had known, I __ help you.",
+    "options": ["would", "will", "would have", "had"],
+    "correctAnswer": 2,
+    "explanation": "Third conditional: if + past perfect"
+  },
+  {
+    "question": "She regrets __ that decision.",
+    "options": ["making", "make", "made", "to make"],
+    "correctAnswer": 0,
+    "explanation": "'regret' is followed by gerund for past actions"
+  },
+  {
+    "question": "He looks as if he __ something.",
+    "options": ["knows", "knew", "had known", "know"],
+    "correctAnswer": 1,
+    "explanation": "Use past simple in 'as if' for unreal present"
+  },
+  {
+    "question": "I’m not accustomed to __ so much work.",
+    "options": ["do", "doing", "to do", "done"],
+    "correctAnswer": 1,
+    "explanation": "'accustomed to' is followed by gerund"
+  },
+  {
+    "question": "She made me __ the room.",
+    "options": ["leave", "leaving", "to leave", "left"],
+    "correctAnswer": 0,
+    "explanation": "Make + object + base verb"
+  },
+  {
+    "question": "I hardly __ any mistakes in my exam.",
+    "options": ["make", "made", "makes", "making"],
+    "correctAnswer": 1,
+    "explanation": "Past simple for completed action"
+  },
+  {
+    "question": "They prefer __ at home than going out.",
+    "options": ["stay", "staying", "to stay", "stayed"],
+    "correctAnswer": 2,
+    "explanation": "'prefer' + to + verb for general preference"
+  },
+  {
+    "question": "It’s time we __ started the meeting.",
+    "options": ["have", "had", "will", "would"],
+    "correctAnswer": 1,
+    "explanation": "It’s time + past simple for suggestion"
+  },
+  {
+    "question": "I couldn’t help __ when I saw it.",
+    "options": ["laugh", "laughing", "to laugh", "laughed"],
+    "correctAnswer": 1,
+    "explanation": "Couldn’t help is followed by gerund"
+  },
+  {
+    "question": "He acts as though he __ the boss.",
+    "options": ["is", "were", "was", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use past subjunctive for unreal situations"
+  },
+  {
+    "question": "I would have called you if I __ your number.",
+    "options": ["know", "knew", "had known", "known"],
+    "correctAnswer": 2,
+    "explanation": "Third conditional: past perfect in if-clause"
+  }
+]

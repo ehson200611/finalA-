@@ -1,0 +1,67 @@
+{
+  "teachersPage": {
+    "englishLanguage": {
+      "ru": "Репетиторы по английскому языку",
+      "en": "English language tutors",
+      "tj": "Маълимони забони англисӣ"
+    },
+    "online": {
+      "ru": "Каталог проверенных репетиторов английского и онлайн платформа для лучшего образовательного опыта",
+      "en": "A catalog of verified English tutors and an online platform for the best educational experience",
+      "tj": "Феҳристи омӯзгорони боэътимоди забони англисӣ ва платформаи онлайн барои таҷрибаи беҳтари таълимӣ"
+    },
+    "from990": {
+      "ru": "От 990 ₽ за урок",
+      "en": "From 990 ₽ per lesson",
+      "tj": "Аз 990 ₽ барои дарс"
+    },
+    "weMonitor": {
+      "ru": "Следим за прогрессом и делаем учёбу увлекательной",
+      "en": "We track progress and make learning engaging",
+      "tj": "Мо пешрафтро назорат мекунем ва таълимро ҷолиб месозем"
+    },
+    "changeGoals": {
+      "ru": "Изменятся цели — поменяем репетитора в любой момент",
+      "en": "Goals change — we can switch your tutor anytime",
+      "tj": "Агар ҳадафҳо тағйир ёбанд — мо омӯзгорро ҳар вақт иваз мекунем"
+    },
+    "selectTutor": {
+      "ru": "Подобрать репетитора",
+      "en": "Find a tutor",
+      "tj": "Интихоби омӯзгор"
+    },
+    "teachersData": [
+      {
+        "id": 1,
+        "imageUrl": "/images/foto2.webp",
+        "name": {
+          "ru": "Галина",
+          "en": "Galina",
+          "tj": "Галина"
+        },
+        "experience": 17,
+        "description": {
+          "ru": "Опытный преподаватель английского языка с более чем 10-летним стажем...",
+          "en": "An experienced English teacher with over 10 years of experience...",
+          "tj": "Омӯзгори бо таҷрибаи забони англисӣ бо зиёда аз 10 соли таҷриба..."
+        },
+        "video": "https://youtu.be/qPkZ2fFpBKY"
+      },
+      {
+        "id": 2,
+        "imageUrl": "/images/foto1.webp",
+        "name": {
+          "ru": "Анна",
+          "en": "Anna",
+          "tj": "Анна"
+        },
+        "experience": 5,
+        "description": {
+          "ru": "Преподаю английский с удовольствием и делаю уроки увлекательными.",
+          "en": "I teach English with pleasure and make lessons engaging.",
+          "tj": "Ман бо хушнудӣ забони англисиро таълим медиҳам ва дарсҳоро ҷолиб месозам."
+        }
+      }
+    ]
+  }
+}

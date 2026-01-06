@@ -1,0 +1,769 @@
+@import 'tailwindcss';
+
+@keyframes bounce-slow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes bounce-slower {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+.animate-bounce-slower {
+  animation: bounce-slower 4s infinite;
+}
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* @theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+  } */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-gradient {
+  background: linear-gradient(250deg, #34d3d6, #216f6f, #34d3d6);
+}
+
+.bg-gradient-for-section {
+  background: linear-gradient(250deg, #216f6f, #34d3d6);
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  height: 3px !important;
+  background: linear-gradient(250deg, red, yellow, #34d3d6) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #34d3d6, 0 0 5px #216f6f;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 14s linear infinite;
+  /* <<-- 10s = тезтар аз 20s */
+  will-change: transform;
+  /* барои performance */
+}
+
+/* Categories.css */
+.categories-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 600px;
+  }
+}
+
+.category-card {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.category-name {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Цвета категорий */
+.category-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
+.category-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+}
+
+.category-green {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+.category-yellow {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.category-red {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+}
+
+.category-indigo {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gradient-text:hover {
+  background: linear-gradient(to right, #facc15, #f97316);
+  -webkit-background-clip: text;
+  scale: 102%;
+  text-shadow: 0px 1px 1px #facc15;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes dot1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(60px, 20px) scale(0.5);
+  }
+
+  50% {
+    transform: translate(80px, 60px) scale(0.6);
+  }
+
+  75% {
+    transform: translate(60px, 100px) scale(0.5);
+  }
+}
+
+@keyframes dot2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(-60px, 20px) scale(0.5);
+  }
+
+  50% {
+    transform: translate(-80px, 60px) scale(0.6);
+  }
+
+  75% {
+    transform: translate(-60px, 100px) scale(0.5);
+  }
+}
+
+@keyframes dot3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(0, -60px) scale(0.5);
+  }
+
+  50% {
+    transform: translate(0, -80px) scale(0.6);
+  }
+
+  75% {
+    transform: translate(0, -60px) scale(0.5);
+  }
+}
+
+@keyframes rotateGroup {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-dot1 {
+  animation: dot1 2.5s ease-in-out infinite;
+}
+
+.animate-dot2 {
+  animation: dot2 2.5s ease-in-out infinite;
+}
+
+.animate-dot3 {
+  animation: dot3 2.5s ease-in-out infinite;
+}
+
+.animate-rotate-group {
+  animation: rotateGroup 6s linear infinite;
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(225 71% 40%) 100%);
+  color: white;
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Brand colors - голубой (primary) */
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 199 89% 65%;
+
+    /* Brand colors - оранжевый (accent) */
+    --accent: 16 100% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Brand colors - синий (secondary) */
+    --secondary: 225 71% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Brand colors - жёлтый (highlight) */
+    --highlight: 45 100% 50%;
+    --highlight-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 89% 48%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(225 71% 40%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(16 100% 59%) 0%, hsl(45 100% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(199 89% 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsla(199, 89%, 48%, 0.1);
+    --shadow-md: 0 4px 16px hsla(199, 89%, 48%, 0.15);
+    --shadow-lg: 0 8px 32px hsla(199, 89%, 48%, 0.2);
+    --shadow-glow: 0 0 24px hsla(199, 89%, 48%, 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+
+    --card: 225 71% 15%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 225 71% 15%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 199 89% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 199 89% 70%;
+
+    --accent: 16 100% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --secondary: 225 71% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --highlight: 45 100% 60%;
+    --highlight-foreground: 222 47% 11%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 199 89% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(199 89% 55%) 0%, hsl(225 71% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(16 100% 65%) 0%, hsl(45 100% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(225 71% 15%) 0%, hsl(225 71% 18%) 100%);
+
+    --shadow-sm: 0 2px 8px hsla(0, 0%, 0%, 0.3);
+    --shadow-md: 0 4px 16px hsla(0, 0%, 0%, 0.4);
+    --shadow-lg: 0 8px 32px hsla(0, 0%, 0%, 0.5);
+    --shadow-glow: 0 0 24px hsla(199, 89%, 55%, 0.4);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.pause-marquee {
+  animation-play-state: paused;
+}
+
+
+@keyframes infinite-slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide {
+  display: flex;
+  width: max-content;
+  animation: infinite-slide 25s linear infinite;
+}
+
+.pause-slide {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   УЛУЧШЕНИЯ UI - Современные эффекты
+   ============================================ */
+
+/* Плавные переходы для всех интерактивных элементов */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Улучшенные карточки с эффектом поднятия */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Современные кнопки с градиентом */
+.btn-gradient {
+  background: linear-gradient(135deg, #34d3d6 0%, #216f6f 100%);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(52, 211, 214, 0.4);
+}
+
+/* Эффект свечения для важных элементов */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #34d3d6, #216f6f);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-effect:hover::after {
+  opacity: 1;
+}
+
+/* Улучшенные инпуты */
+.input-modern {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.input-modern:focus {
+  border-color: #34d3d6;
+  box-shadow: 0 0 0 4px rgba(52, 211, 214, 0.1);
+  outline: none;
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Анимация пульсации для важных элементов */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 214, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(52, 211, 214, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Улучшенная типографика */
+.text-gradient {
+  background: linear-gradient(135deg, #34d3d6 0%, #216f6f 50%, #34d3d6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s linear infinite;
+}
+
+@keyframes gradient-shift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Стеклянный эффект (glassmorphism) */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Улучшенные скроллбары */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #34d3d6, #216f6f);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #216f6f, #34d3d6);
+}
+
+/* Эффект волны при наведении */
+.wave-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.wave-effect:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Улучшенные тени */
+.shadow-modern {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(52, 211, 214, 0.05);
+}
+
+.shadow-modern-lg {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04),
+              0 0 0 1px rgba(52, 211, 214, 0.1);
+}
+
+/* Плавное появление изображений */
+.image-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Эффект наклона при наведении */
+.tilt-effect {
+  transition: transform 0.3s ease;
+}
+
+.tilt-effect:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Улучшенные границы */
+.border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #34d3d6, #216f6f) border-box;
+}
+
+.dark .border-gradient {
+  background: linear-gradient(#0a1a23, #0a1a23) padding-box,
+              linear-gradient(135deg, #34d3d6, #216f6f) border-box;
+}
+
+/* Анимация загрузки */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-size: 1000px 100%;
+}
+
+.dark .shimmer {
+  background: linear-gradient(
+    to right,
+    #1a1a1a 0%,
+    #2a2a2a 20%,
+    #1a1a1a 40%,
+    #1a1a1a 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Улучшенные переходы для модальных окон */
+.modal-enter {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Эффект частиц при клике */
+.particle-effect {
+  position: relative;
+}
+
+.particle-effect::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #34d3d6 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.particle-effect:active::after {
+  opacity: 0.3;
+  animation: particleSpread 0.6s ease-out;
+}
+
+@keyframes particleSpread {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

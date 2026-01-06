@@ -1,0 +1,154 @@
+from django.core.management.base import BaseCommand
+from test_page.models import TestPage
+import json
+
+class Command(BaseCommand):
+    help = 'Seed TestPage with JSON data'
+
+    def handle(self, *args, **kwargs):
+        data = {
+  "test-page": {
+    "heroTitle": {
+      "ru": "Тест уровня английского языка",
+      "en": "English Level Test",
+      "tj": "Санҷиши сатҳи англисӣ"
+    },
+    "heroSubtitle": {
+      "ru": "Определите свой уровень английского от A1 до C2.",
+      "en": "Determine your English level from A1 to C2.",
+      "tj": "Сатҳи англисии худро аз A1 то C2 муайян кунед."
+    },
+    "heroDescription": {
+      "ru": "Пройдите тест и узнайте ваш уровень по шкале CEFR.",
+      "en": "Take the test and find your CEFR level.",
+      "tj": "Санҷишро гузаронед ва сатҳи CEFR-и худро донед."
+    },
+    "howItWorksTitle": {
+      "ru": "Как это работает",
+      "en": "How it works",
+      "tj": "Он чӣ гуна кор мекунад"
+    },
+    "levelsTitle": {
+      "ru": "Выберите уровень",
+      "en": "Choose a level",
+      "tj": "Сатҳро интихоб кунед"
+    },
+    "levelsDescription": {
+      "ru": "Выберите конкретный уровень для прохождения или пройдите полный тест, чтобы получить полную оценку.",
+      "en": "Select a specific level to focus on, or take the complete test to get a comprehensive assessment.",
+      "tj": "Як сатҳи муайянро интихоб кунед, ё ҳамаи тестро гузаронед, то баҳодиҳии комил ба даст оред."
+    },
+    "steps": [
+      {
+        "id": "step1",
+        "text": {
+          "ru": "Выберите уровень или пройдите полный тест.",
+          "en": "Select a level or take the full test.",
+          "tj": "Сатҳро интихоб кунед ё санҷиши пурра гузаронед."
+        }
+      },
+      {
+        "id": "step2",
+        "text": {
+          "ru": "Ответьте на вопросы по грамматике и лексике.",
+          "en": "Answer grammar and vocabulary questions.",
+          "tj": "Ба саволҳои грамматика ва луғавӣ ҷавоб диҳед."
+        }
+      },
+      {
+        "id": "step3",
+        "text": {
+          "ru": "Получите детальный анализ ваших знаний.",
+          "en": "Get a detailed analysis of your knowledge.",
+          "tj": "Таҳлили муфассали донишҳои худро гиред."
+        }
+      }
+    ],
+    "levels": [
+      {
+        "id": "A1",
+        "name": {
+          "ru": "A1 - Начальный",
+          "en": "A1 - Beginner",
+          "tj": "A1 - Оғозкунанда"
+        },
+        "description": {
+          "ru": "Базовые фразы и выражения.",
+          "en": "Basic phrases and expressions.",
+          "tj": "Ифодаву ибораҳои асосӣ."
+        }
+      },
+      {
+        "id": "A2",
+        "name": {
+          "ru": "A2 - Элементарный",
+          "en": "A2 - Elementary",
+          "tj": "A2 - Содда"
+        },
+        "description": {
+          "ru": "Простые темы повседневной жизни.",
+          "en": "Simple everyday topics.",
+          "tj": "Мавзӯъҳои оддии рӯзмарра."
+        }
+      },
+      {
+        "id": "B1",
+        "name": {
+          "ru": "B1 - Средний",
+          "en": "B1 - Intermediate",
+          "tj": "B1 - Миёна"
+        },
+        "description": {
+          "ru": "Знакомые темы и интересы.",
+          "en": "Familiar matters and interests.",
+          "tj": "Мавзӯъҳои ошно ва шавқҳо."
+        }
+      },
+      {
+        "id": "B2",
+        "name": {
+          "ru": "B2 - Выше среднего",
+          "en": "B2 - Upper Intermediate",
+          "tj": "B2 - Баландтар аз миёна"
+        },
+        "description": {
+          "ru": "Сложные тексты и абстрактные темы.",
+          "en": "Complex text and abstract topics.",
+          "tj": "Матнҳои мураккаб ва мавзӯъҳои абстрактӣ."
+        }
+      },
+      {
+        "id": "C1",
+        "name": {
+          "ru": "C1 - Продвинутый",
+          "en": "C1 - Advanced",
+          "tj": "C1 - Пешрафта"
+        },
+        "description": {
+          "ru": "Широкий спектр сложных текстов.",
+          "en": "Wide range of demanding texts.",
+          "tj": "Миқёси васеи матнҳои талаботӣ."
+        }
+      },
+      {
+        "id": "C2",
+        "name": {
+          "ru": "C2 - Владение в совершенстве",
+          "en": "C2 - Mastery",
+          "tj": "C2 - Мастерӣ"
+        },
+        "description": {
+          "ru": "Понимание почти всего услышанного или прочитанного.",
+          "en": "Understanding almost everything heard or read.",
+          "tj": "Фаҳмидани қариб ҳама чизе ки шунида ё хонда шудааст."
+        }
+      }
+    ]
+  }
+}
+
+
+        # Ҳама чизро тоза кунед ва бозсозӣ кунед
+        TestPage.objects.all().delete()
+        obj = TestPage.objects.create(data=data)
+        self.stdout.write(self.style.SUCCESS(f'Seeded successfully! ID = {obj.id}'))

@@ -1,0 +1,122 @@
+[
+  {
+    "question": "Had it not been for your help, I __ completed the project.",
+    "options": ["would have", "will have", "would", "had"],
+    "correctAnswer": 0,
+    "explanation": "Third conditional with 'had it not been for'"
+  },
+  {
+    "question": "No sooner __ I left than the phone rang.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'no sooner'"
+  },
+  {
+    "question": "Scarcely __ she arrived when it started raining.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'scarcely'"
+  },
+  {
+    "question": "Were it not for his advice, I __ failed.",
+    "options": ["would have", "will", "would", "had"],
+    "correctAnswer": 0,
+    "explanation": "Third conditional, inversion"
+  },
+  {
+    "question": "I would rather you __ completed the work on time.",
+    "options": ["had", "have", "have had", "having"],
+    "correctAnswer": 0,
+    "explanation": "Would rather + past perfect for past advice"
+  },
+  {
+    "question": "It is imperative that he __ present at the meeting.",
+    "options": ["be", "is", "was", "been"],
+    "correctAnswer": 0,
+    "explanation": "Subjunctive mood for necessity"
+  },
+  {
+    "question": "Little __ I know about the upcoming exam.",
+    "options": ["did", "do", "have", "had"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'little'"
+  },
+  {
+    "question": "Hardly __ the lesson begun when the fire alarm rang.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'hardly'"
+  },
+  {
+    "question": "I would rather he __ gone there.",
+    "options": ["had", "have", "has", "having"],
+    "correctAnswer": 0,
+    "explanation": "Would rather + past perfect"
+  },
+  {
+    "question": "No matter how hard __, they couldn’t finish on time.",
+    "options": ["they try", "they tried", "did they try", "they trying"],
+    "correctAnswer": 1,
+    "explanation": "No matter + past simple"
+  },
+  {
+    "question": "Only by __ hard work did he succeed.",
+    "options": ["apply", "applying", "applied", "having applied"],
+    "correctAnswer": 1,
+    "explanation": "Inversion after 'only by'"
+  },
+  {
+    "question": "Were it not for her experience, she __ failed.",
+    "options": ["would have", "will have", "would", "had"],
+    "correctAnswer": 0,
+    "explanation": "Third conditional, inversion"
+  },
+  {
+    "question": "I couldn’t help __ at his joke.",
+    "options": ["laugh", "laughing", "to laugh", "laughed"],
+    "correctAnswer": 1,
+    "explanation": "Couldn't help + gerund"
+  },
+  {
+    "question": "Seldom __ we witness such events.",
+    "options": ["do", "did", "have", "had"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'seldom'"
+  },
+  {
+    "question": "I wish I __ prepared better for the test.",
+    "options": ["have", "had", "will have", "having"],
+    "correctAnswer": 1,
+    "explanation": "Past perfect in 'wish' for regret"
+  },
+  {
+    "question": "Not only __ she talented, but also intelligent.",
+    "options": ["is", "was", "she", "does"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'not only'"
+  },
+  {
+    "question": "Had I realized, I __ warned you earlier.",
+    "options": ["would have", "will have", "would", "had"],
+    "correctAnswer": 0,
+    "explanation": "Third conditional"
+  },
+  {
+    "question": "It’s high time they __ considered all options.",
+    "options": ["have", "had", "will", "would"],
+    "correctAnswer": 1,
+    "explanation": "It’s high time + past simple"
+  },
+  {
+    "question": "Little __ he imagine the consequences.",
+    "options": ["did", "does", "do", "done"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'little'"
+  },
+  {
+    "question": "I insisted on __ all the details before signing.",
+    "options": ["check", "checking", "to check", "checked"],
+    "correctAnswer": 1,
+    "explanation": "Insist on + gerund"
+  }
+]

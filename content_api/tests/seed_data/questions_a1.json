@@ -1,0 +1,122 @@
+[
+  {
+    "question": "I usually __ breakfast at 8 am.",
+    "options": ["have", "has", "having", "had"],
+    "correctAnswer": 0,
+    "explanation": "Use 'have' with 'I' in present simple"
+  },
+  {
+    "question": "She __ TV every evening.",
+    "options": ["watch", "watches", "watching", "watched"],
+    "correctAnswer": 1,
+    "explanation": "Add -es to verbs with third person singular"
+  },
+  {
+    "question": "My birthday is __ May.",
+    "options": ["on", "in", "at", "by"],
+    "correctAnswer": 1,
+    "explanation": "Use 'in' with months"
+  },
+  {
+    "question": "How __ children do you have?",
+    "options": ["much", "many", "old", "long"],
+    "correctAnswer": 1,
+    "explanation": "Use 'many' with countable nouns"
+  },
+  {
+    "question": "I __ hungry.",
+    "options": ["have", "has", "am", "is"],
+    "correctAnswer": 2,
+    "explanation": "Use 'am' with adjectives and 'I'"
+  },
+  {
+    "question": "He __ to school every day.",
+    "options": ["go", "goes", "going", "went"],
+    "correctAnswer": 1,
+    "explanation": "Use 'goes' for he/she/it in present simple"
+  },
+  {
+    "question": "We __ playing football now.",
+    "options": ["is", "are", "am", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use 'are' with plural subjects in present continuous"
+  },
+  {
+    "question": "I have __ apples.",
+    "options": ["some", "any", "many", "much"],
+    "correctAnswer": 0,
+    "explanation": "'Some' for affirmative sentences with countable nouns"
+  },
+  {
+    "question": "Do you like __ tea?",
+    "options": ["some", "any", "a", "the"],
+    "correctAnswer": 1,
+    "explanation": "'Any' in questions"
+  },
+  {
+    "question": "They __ not at home now.",
+    "options": ["is", "are", "am", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use 'are' with plural subjects"
+  },
+  {
+    "question": "I __ to the cinema yesterday.",
+    "options": ["go", "went", "gone", "going"],
+    "correctAnswer": 1,
+    "explanation": "Past tense of 'go' is 'went'"
+  },
+  {
+    "question": "She __ her homework every day.",
+    "options": ["do", "does", "did", "doing"],
+    "correctAnswer": 1,
+    "explanation": "Third person singular present simple uses 'does'"
+  },
+  {
+    "question": "It __ raining now.",
+    "options": ["is", "are", "am", "be"],
+    "correctAnswer": 0,
+    "explanation": "Use 'is' with singular subject"
+  },
+  {
+    "question": "I __ like coffee.",
+    "options": ["do", "does", "did", "doing"],
+    "correctAnswer": 0,
+    "explanation": "'Do' with I/you/we/they in present simple"
+  },
+  {
+    "question": "Where __ you live?",
+    "options": ["do", "does", "did", "are"],
+    "correctAnswer": 0,
+    "explanation": "Use 'do' with you in questions"
+  },
+  {
+    "question": "He __ his keys yesterday.",
+    "options": ["lose", "loses", "lost", "losing"],
+    "correctAnswer": 2,
+    "explanation": "Past tense of 'lose' is 'lost'"
+  },
+  {
+    "question": "I am __ the park now.",
+    "options": ["in", "on", "at", "by"],
+    "correctAnswer": 0,
+    "explanation": "'in' for places/parks"
+  },
+  {
+    "question": "We usually __ lunch at 1 pm.",
+    "options": ["have", "has", "had", "having"],
+    "correctAnswer": 0,
+    "explanation": "Use 'have' with we in present simple"
+  },
+  {
+    "question": "She __ English very well.",
+    "options": ["speaks", "speak", "speaking", "spoken"],
+    "correctAnswer": 0,
+    "explanation": "Third person singular uses 'speaks'"
+  },
+  {
+    "question": "I __ like to read books.",
+    "options": ["do", "does", "did", "done"],
+    "correctAnswer": 0,
+    "explanation": "Use 'do' with 'I' in present simple"
+  }
+]

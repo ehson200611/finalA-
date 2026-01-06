@@ -1,0 +1,30 @@
+[Unit]
+Description=A+ Learning Center Django Application
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/home/ehson/Рабочий стол/A+ pr/content_api
+Environment="PATH=/home/ehson/Рабочий стол/A+ pr/content_api/venv/bin"
+Environment="DJANGO_SETTINGS_MODULE=content_api.settings"
+ExecStart=/home/ehson/Рабочий стол/A+ pr/content_api/venv/bin/gunicorn \
+    --config /home/ehson/Рабочий\ стол/A+\ pr/nginx/gunicorn_config.py \
+    content_api.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=10
+
+# Логирование
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=aplus-django
+
+# Безопасность
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,242 @@
+[
+    {
+        "id": "b1_1",
+        "question": "If I __ you, I would take the job.",
+        "options": [
+            "am",
+            "was",
+            "were",
+            "would be"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The second conditional uses 'if + past simple' (with 'were' for all subjects) to talk about unreal present or future situations."
+    },
+    {
+        "id": "b1_2",
+        "question": "By next year, I __ here for five years.",
+        "options": [
+            "will work",
+            "will have worked",
+            "will be working",
+            "work"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the Future Perfect ('will have worked') to talk about an action that will be completed before a specific point in the future."
+    },
+    {
+        "id": "b1_3",
+        "question": "The report __ by the team last week.",
+        "options": [
+            "is written",
+            "was written",
+            "wrote",
+            "written"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the Passive Voice ('was written') when the action is more important than who did it."
+    },
+    {
+        "id": "b1_4",
+        "question": "She suggested __ to the new Italian restaurant.",
+        "options": [
+            "going",
+            "to go",
+            "go",
+            "we go"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The verb 'suggest' is followed by a gerund (-ing form)."
+    },
+    {
+        "id": "b1_5",
+        "question": "He asked me where __.",
+        "options": [
+            "did I live",
+            "I did live",
+            "I lived",
+            "lived I"
+        ],
+        "correctAnswer": 2,
+        "explanation": "In reported speech, the word order is subject + verb, and we often need to change the tense."
+    },
+    {
+        "id": "b1_6",
+        "question": "I wish I __ speak French fluently.",
+        "options": [
+            "can",
+            "could",
+            "will",
+            "speak"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use 'could' with 'wish' to talk about a present ability you would like to have."
+    },
+    {
+        "id": "b1_7",
+        "question": "Despite __ tired, she finished the project.",
+        "options": [
+            "feel",
+            "feeling",
+            "to feel",
+            "felt"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Despite' and 'in spite of' are followed by a noun or a gerund."
+    },
+    {
+        "id": "b1_8",
+        "question": "This is __ movie I have ever seen!",
+        "options": [
+            "the good",
+            "the better",
+            "the best",
+            "the bestest"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use the superlative form ('the best') to compare one thing with all others in its group."
+    },
+    {
+        "id": "b1_9",
+        "question": "You __ have called me! I was really worried.",
+        "options": [
+            "might",
+            "could",
+            "should",
+            "would"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use 'should have + past participle' to criticize a past action or talk about a past obligation that wasn't fulfilled."
+    },
+    {
+        "id": "b1_10",
+        "question": "The man __ car was stolen called the police.",
+        "options": [
+            "who",
+            "whom",
+            "whose",
+            "which"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use the relative pronoun 'whose' to indicate possession."
+    },
+    {
+        "id": "b1_11",
+        "question": "I'm looking forward __ you at the weekend.",
+        "options": [
+            "to see",
+            "to seeing",
+            "see",
+            "seeing"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The phrasal verb 'look forward to' is followed by a gerund (-ing form)."
+    },
+    {
+        "id": "b1_12",
+        "question": "If you __ harder, you would have passed the exam.",
+        "options": [
+            "studied",
+            "had studied",
+            "would study",
+            "study"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The third conditional ('if + past perfect, ... would have + past participle') talks about unreal situations in the past."
+    },
+    {
+        "id": "b1_13",
+        "question": "She __ live in London, but now she lives in Edinburgh.",
+        "options": [
+            "used to",
+            "is used to",
+            "gets used to",
+            "use to"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use 'used to + infinitive' for past habits or states that are no longer true."
+    },
+    {
+        "id": "b1_14",
+        "question": "By the time we arrived, the meeting __.",
+        "options": [
+            "had already started",
+            "has already started",
+            "already started",
+            "already starts"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use the Past Perfect ('had started') for an action that happened before another action in the past."
+    },
+    {
+        "id": "b1_15",
+        "question": "He denied __ the window.",
+        "options": [
+            "break",
+            "to break",
+            "breaking",
+            "broke"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The verb 'deny' is followed by a gerund (-ing form)."
+    },
+    {
+        "id": "b1_16",
+        "question": "It's high time you __ a decision.",
+        "options": [
+            "make",
+            "made",
+            "have made",
+            "will make"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The structure 'It's (high) time' is followed by the past simple to talk about something that should be done soon."
+    },
+    {
+        "id": "b1_17",
+        "question": "I'd rather you __ here.",
+        "options": [
+            "stay",
+            "stayed",
+            "to stay",
+            "staying"
+        ],
+        "correctAnswer": 1,
+        "explanation": "After 'I'd rather' when talking about another person, use the past simple."
+    },
+    {
+        "id": "b1_18",
+        "question": "Not only __ late, but he also forgot the documents.",
+        "options": [
+            "he was",
+            "was he",
+            "did he be",
+            "he is"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Not only' at the beginning of a sentence requires inversion (auxiliary verb before the subject)."
+    },
+    {
+        "id": "b1_19",
+        "question": "The project was __ challenging that we needed extra help.",
+        "options": [
+            "so",
+            "such",
+            "too",
+            "very"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use the structure 'so + adjective + that' to show consequence."
+    },
+    {
+        "id": "b1_20",
+        "question": "I regret __ you that your application was unsuccessful.",
+        "options": [
+            "inform",
+            "informing",
+            "to inform",
+            "informed"
+        ],
+        "correctAnswer": 2,
+        "explanation": "'Regret to inform' is used to give bad news formally. 'Regret + gerund' is for feeling sorry about a past action."
+    }
+]

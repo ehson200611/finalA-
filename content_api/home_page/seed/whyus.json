@@ -1,0 +1,50 @@
+[
+    {
+      "id": "1",
+      "name": {
+        "ru": "Обучение ведется на английском, русском и таджикском языках.",
+        "en": "Lessons are conducted in English, Russian, and Tajik.",
+        "tj": "Дарсҳо ба забони англисӣ, русӣ ва тоҷикӣ гузаронида мешаванд."
+      }
+    },
+    {
+      "id": "2",
+      "name": {
+        "ru": "Вы научитесь свободно общаться в путешествиях, работе и учёбе ",
+        "en": "You will learn to communicate freely while traveling, working, and studying ",
+        "tj": "Шумо дар сафар, кор ва таҳсил озодона муошират карданро меомӯзед "
+      }
+    },
+    {
+      "id": "3",
+      "name": {
+        "ru": "Наши преподаватели имеют международные сертификаты (IELTS, TESOL)",
+        "en": "Our teachers have international certificates (IELTS, TESOL)",
+        "tj": "Омӯзгорони мо дорои сертификатҳои байналмилалӣ (IELTS, TESOL) мебошанд"
+      }
+    },
+    {
+      "id": "4",
+      "name": {
+        "ru": "Вы увидите прогресс уже через 1 месяц. Тестирование знаний и практика каждую неделю",
+        "en": "You will see progress in just 1 month. Weekly knowledge testing and practice",
+        "tj": "Шумо дар 1 моҳ пешрафт мебинед. Ҳар ҳафта санҷиш ва машқ"
+      }
+    },
+    {
+      "id": "5",
+      "name": {
+        "ru": "Мы обучаем по международным стандартам. Подготовка к экзаменам IELTS, TOEFL, CEFR",
+        "en": "We teach according to international standards. Preparation for IELTS, TOEFL, CEFR",
+        "tj": "Мо бо стандартҳои байналмилалӣ таълим медиҳем. Тайёрӣ ба IELTS, TOEFL, CEFR"
+      }
+    },
+    {
+      "id": "6",
+      "name": {
+        "ru": "Английский откроет вам новые возможности. Учёба за границей, и новые знакомства",
+        "en": "English will open new opportunities. Study abroad and new connections",
+        "tj": "Англисӣ имкониятҳои нав медиҳад. Таҳсил дар хориҷа ва дӯстиҳои нав"
+      }
+    }
+  ]

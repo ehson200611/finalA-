@@ -1,0 +1,122 @@
+[
+  {
+    "question": "No sooner __ I arrived than it started raining.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'no sooner' uses past perfect"
+  },
+  {
+    "question": "Had I known, I __ helped.",
+    "options": ["would", "will", "would have", "had"],
+    "correctAnswer": 2,
+    "explanation": "Third conditional: 'would have' + past participle"
+  },
+  {
+    "question": "Hardly __ she speak when the phone rang.",
+    "options": ["did", "had", "does", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'hardly'"
+  },
+  {
+    "question": "It’s high time you __ to the doctor.",
+    "options": ["go", "went", "gone", "going"],
+    "correctAnswer": 1,
+    "explanation": "'It’s high time' + past simple"
+  },
+  {
+    "question": "I would rather you __ smoking.",
+    "options": ["stop", "stopped", "stopping", "have stopped"],
+    "correctAnswer": 1,
+    "explanation": "'would rather' + past simple for advice"
+  },
+  {
+    "question": "She would prefer __ alone.",
+    "options": ["be", "to be", "being", "been"],
+    "correctAnswer": 1,
+    "explanation": "'prefer' + to + verb"
+  },
+  {
+    "question": "Seldom __ I see such a beautiful place.",
+    "options": ["do", "did", "have", "had"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'seldom'"
+  },
+  {
+    "question": "I insisted on __ my own.",
+    "options": ["do", "doing", "to do", "done"],
+    "correctAnswer": 1,
+    "explanation": "Insist on + gerund"
+  },
+  {
+    "question": "I can’t help __ when I see mistakes.",
+    "options": ["laugh", "laughing", "to laugh", "laughed"],
+    "correctAnswer": 1,
+    "explanation": "Can’t help + gerund"
+  },
+  {
+    "question": "No matter how hard __, he fails.",
+    "options": ["he tries", "does he try", "he tried", "did he try"],
+    "correctAnswer": 0,
+    "explanation": "No matter + statement"
+  },
+  {
+    "question": "Were I __, I would agree.",
+    "options": ["rich", "richer", "riches", "richly"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'were'"
+  },
+  {
+    "question": "I regret __ that mistake.",
+    "options": ["make", "making", "made", "to make"],
+    "correctAnswer": 1,
+    "explanation": "'regret' for past action + gerund"
+  },
+  {
+    "question": "It is time we __ our work.",
+    "options": ["finish", "finished", "have finished", "finishing"],
+    "correctAnswer": 1,
+    "explanation": "'It is time' + past simple"
+  },
+  {
+    "question": "She avoided __ the issue.",
+    "options": ["discuss", "discussing", "to discuss", "discussed"],
+    "correctAnswer": 1,
+    "explanation": "Avoid + gerund"
+  },
+  {
+    "question": "He acts as though he __ all the answers.",
+    "options": ["knows", "knew", "had known", "knowing"],
+    "correctAnswer": 1,
+    "explanation": "As though + past for unreal present"
+  },
+  {
+    "question": "It’s necessary that he __ informed.",
+    "options": ["be", "is", "was", "been"],
+    "correctAnswer": 0,
+    "explanation": "Subjunctive mood"
+  },
+  {
+    "question": "If she __ harder, she would pass.",
+    "options": ["works", "worked", "had worked", "working"],
+    "correctAnswer": 1,
+    "explanation": "Second conditional"
+  },
+  {
+    "question": "I would rather you __ to the party.",
+    "options": ["go", "went", "going", "gone"],
+    "correctAnswer": 1,
+    "explanation": "Would rather + past simple"
+  },
+  {
+    "question": "Little __ he know about the problem.",
+    "options": ["did", "does", "do", "done"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'little'"
+  },
+  {
+    "question": "I couldn’t help __ when I saw the movie.",
+    "options": ["laugh", "laughing", "to laugh", "laughed"],
+    "correctAnswer": 1,
+    "explanation": "Couldn't help + gerund"
+  }
+]

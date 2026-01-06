@@ -1,0 +1,242 @@
+[
+    {
+        "id": "b2_1",
+        "question": "Had I known about the traffic, I __ earlier.",
+        "options": [
+            "would leave",
+            "would have left",
+            "left",
+            "had left"
+        ],
+        "correctAnswer": 1,
+        "explanation": "This is an inverted third conditional. The full form is 'If I had known..., I would have left.'"
+    },
+    {
+        "id": "b2_2",
+        "question": "She insisted that he __ the truth.",
+        "options": [
+            "tell",
+            "tells",
+            "told",
+            "has told"
+        ],
+        "correctAnswer": 0,
+        "explanation": "After verbs like 'insist, recommend, suggest' we can use the subjunctive form, which is the base form of the verb."
+    },
+    {
+        "id": "b2_3",
+        "question": "No sooner __ home than it started to rain.",
+        "options": [
+            "I had left",
+            "had I left",
+            "I left",
+            "did I leave"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'No sooner' at the beginning of a sentence requires inversion (auxiliary 'had' before the subject)."
+    },
+    {
+        "id": "b2_4",
+        "question": "He is believed __ in a foreign country.",
+        "options": [
+            "to live",
+            "to be living",
+            "to have lived",
+            "living"
+        ],
+        "correctAnswer": 1,
+        "explanation": "This is a passive reporting structure. For a current situation, use 'to be + -ing' or 'to + infinitive'."
+    },
+    {
+        "id": "b2_5",
+        "question": "Such __ the intensity of the storm that trees were uprooted.",
+        "options": [
+            "was",
+            "is",
+            "were",
+            "be"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Such' at the beginning of a sentence can cause inversion. The subject is 'the intensity' (singular)."
+    },
+    {
+        "id": "b2_6",
+        "question": "I'd prefer __ to the party alone.",
+        "options": [
+            "you don't go",
+            "you not to go",
+            "you didn't go",
+            "you to not go"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The structure is 'would prefer + object + (not) + to-infinitive'."
+    },
+    {
+        "id": "b2_7",
+        "question": "Little __ how important that decision would be.",
+        "options": [
+            "she did know",
+            "did she know",
+            "she knew",
+            "knew she"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative adverbs like 'little' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "b2_8",
+        "question": "The contract is subject __ approval by the board.",
+        "options": [
+            "for",
+            "with",
+            "to",
+            "on"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The fixed phrase is 'subject to' meaning 'conditional upon'."
+    },
+    {
+        "id": "b2_9",
+        "question": "Were __ to offer me the job, I would accept it.",
+        "options": [
+            "they",
+            "he",
+            "them",
+            "their"
+        ],
+        "correctAnswer": 0,
+        "explanation": "This is an inverted second conditional. The full form is 'If they were to offer...'"
+    },
+    {
+        "id": "b2_10",
+        "question": "The company is on the __ of bankruptcy.",
+        "options": [
+            "edge",
+            "verge",
+            "brink",
+            "margin"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The correct collocation is 'on the brink of'."
+    },
+    {
+        "id": "b2_11",
+        "question": "So exhausting __ that I fell asleep immediately.",
+        "options": [
+            "the journey was",
+            "was the journey",
+            "journey was",
+            "was journey"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'So + adjective' at the beginning of a sentence requires inversion."
+    },
+    {
+        "id": "b2_12",
+        "question": "He can't __ seen the message because he didn't reply.",
+        "options": [
+            "have",
+            "had",
+            "to have",
+            "having"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use 'can't have + past participle' to express certainty that something did not happen in the past."
+    },
+    {
+        "id": "b2_13",
+        "question": "But for your help, I __ the project on time.",
+        "options": [
+            "wouldn't finish",
+            "wouldn't have finished",
+            "didn't finish",
+            "hadn't finished"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'But for' means 'if it were not for' and is used with the third conditional form."
+    },
+    {
+        "id": "b2_14",
+        "question": "The proposal was met with __ resistance from the staff.",
+        "options": [
+            "stern",
+            "stiff",
+            "strong",
+            "hard"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The collocation is 'stiff resistance'."
+    },
+    {
+        "id": "b2_15",
+        "question": "Never before __ so betrayed.",
+        "options": [
+            "I have felt",
+            "have I felt",
+            "I felt",
+            "felt I"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative adverbs like 'never' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "b2_16",
+        "question": "His actions are __ with company policy.",
+        "options": [
+            "incompatible",
+            "inconsistent",
+            "incapable",
+            "invalid"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The correct collocation is 'incompatible with'."
+    },
+    {
+        "id": "b2_17",
+        "question": "Under no circumstances __ to disclose this information.",
+        "options": [
+            "you are",
+            "are you",
+            "you will",
+            "will you"
+        ],
+        "correctAnswer": 3,
+        "explanation": "Negative phrases like 'under no circumstances' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "b2_18",
+        "question": "She speaks __ she were the expert on the subject.",
+        "options": [
+            "as if",
+            "like",
+            "as",
+            "how"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Use 'as if' or 'as though' with the subjunctive ('were') to talk about an unreal situation."
+    },
+    {
+        "id": "b2_19",
+        "question": "The minister was accused of __ the truth.",
+        "options": [
+            "bending",
+            "twisting",
+            "winding",
+            "curving"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The collocation is 'twisting the truth' (distorting it)."
+    },
+    {
+        "id": "b2_20",
+        "question": "Not a single word __ during the entire meeting.",
+        "options": [
+            "he spoke",
+            "did he speak",
+            "spoke he",
+            "he did speak"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative phrases at the beginning of a sentence require inversion."
+    }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "question": "I have been living here __ 2015.",
+    "options": ["since", "for", "at", "in"],
+    "correctAnswer": 0,
+    "explanation": "Use 'since' with a specific starting point"
+  },
+  {
+    "question": "She __ to the gym three times a week.",
+    "options": ["go", "goes", "going", "went"],
+    "correctAnswer": 1,
+    "explanation": "Third person singular present simple uses 'goes'"
+  },
+  {
+    "question": "They __ already finished their homework.",
+    "options": ["has", "have", "had", "having"],
+    "correctAnswer": 1,
+    "explanation": "Present perfect uses 'have' with plural subjects"
+  },
+  {
+    "question": "If it __ tomorrow, we will stay home.",
+    "options": ["rains", "rain", "rained", "will rain"],
+    "correctAnswer": 0,
+    "explanation": "First conditional uses present simple in if-clause"
+  },
+  {
+    "question": "I wish I __ more time to relax.",
+    "options": ["have", "had", "will have", "having"],
+    "correctAnswer": 1,
+    "explanation": "Use past simple for unreal present situations"
+  },
+  {
+    "question": "He asked me where I __ last night.",
+    "options": ["was", "were", "am", "is"],
+    "correctAnswer": 0,
+    "explanation": "Reported speech uses past tense"
+  },
+  {
+    "question": "By next year, I __ lived here for 10 years.",
+    "options": ["will", "will have", "will be", "would"],
+    "correctAnswer": 1,
+    "explanation": "Future perfect tense: will have + past participle"
+  },
+  {
+    "question": "She has been working here __ 2010.",
+    "options": ["since", "for", "at", "in"],
+    "correctAnswer": 0,
+    "explanation": "'Since' is used with a starting point"
+  },
+  {
+    "question": "We __ to London last summer.",
+    "options": ["go", "went", "gone", "going"],
+    "correctAnswer": 1,
+    "explanation": "Past simple of 'go' is 'went'"
+  },
+  {
+    "question": "I would travel more if I __ more money.",
+    "options": ["have", "had", "will have", "would have"],
+    "correctAnswer": 1,
+    "explanation": "Second conditional: if + past simple"
+  },
+  {
+    "question": "He is looking forward to __ you.",
+    "options": ["see", "seeing", "saw", "seen"],
+    "correctAnswer": 1,
+    "explanation": "'look forward to' is followed by gerund"
+  },
+  {
+    "question": "We decided __ by car instead of bus.",
+    "options": ["go", "to go", "going", "went"],
+    "correctAnswer": 1,
+    "explanation": "Decided is followed by 'to + verb'"
+  },
+  {
+    "question": "It’s high time you __ your homework.",
+    "options": ["do", "did", "done", "doing"],
+    "correctAnswer": 1,
+    "explanation": "'It’s high time' is followed by past simple"
+  },
+  {
+    "question": "She looks forward to __ the new movie.",
+    "options": ["watch", "watching", "watched", "watches"],
+    "correctAnswer": 1,
+    "explanation": "'look forward to' is followed by gerund"
+  },
+  {
+    "question": "If I __ you, I would apologize.",
+    "options": ["am", "were", "was", "be"],
+    "correctAnswer": 1,
+    "explanation": "Second conditional: 'if I were you'"
+  },
+  {
+    "question": "I’m used __ early in the morning.",
+    "options": ["wake", "waking", "to wake", "to waking"],
+    "correctAnswer": 3,
+    "explanation": "'be used to' is followed by gerund"
+  },
+  {
+    "question": "She asked me __ I had seen the movie.",
+    "options": ["if", "whether", "both", "either"],
+    "correctAnswer": 2,
+    "explanation": "In reported questions, 'if' or 'whether' can be used"
+  },
+  {
+    "question": "I prefer tea __ coffee.",
+    "options": ["than", "to", "over", "more"],
+    "correctAnswer": 1,
+    "explanation": "'prefer' is followed by 'to'"
+  },
+  {
+    "question": "They __ been working here since 2015.",
+    "options": ["has", "have", "had", "having"],
+    "correctAnswer": 1,
+    "explanation": "Present perfect continuous with plural subject uses 'have'"
+  },
+  {
+    "question": "He’s interested in __ new languages.",
+    "options": ["learn", "learning", "learned", "to learn"],
+    "correctAnswer": 1,
+    "explanation": "'interested in' is followed by gerund"
+  }
+]

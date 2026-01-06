@@ -1,0 +1,242 @@
+[
+    {
+        "id": "c1_1",
+        "question": "__ his brilliant performance, he wasn't nominated for the award.",
+        "options": [
+            "For all",
+            "But for",
+            "Despite",
+            "Whereas"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'For all' means 'in spite of' and is used to introduce a contrasting fact."
+    },
+    {
+        "id": "c1_2",
+        "question": "The legislation is __ to change in the near future.",
+        "options": [
+            "inclined",
+            "prone",
+            "liable",
+            "subject"
+        ],
+        "correctAnswer": 3,
+        "explanation": "'Be subject to change' is a fixed phrase meaning 'likely to change'."
+    },
+    {
+        "id": "c1_3",
+        "question": "So __ in her work that she didn't hear the phone ring.",
+        "options": [
+            "absorbed she was",
+            "was she absorbed",
+            "she was absorbed",
+            "absorbed was she"
+        ],
+        "correctAnswer": 3,
+        "explanation": "'So + adjective' at the beginning of a sentence requires inversion."
+    },
+    {
+        "id": "c1_4",
+        "question": "Were the negotiations __, the deal would fall through.",
+        "options": [
+            "to break down",
+            "break down",
+            "broken down",
+            "breaking down"
+        ],
+        "correctAnswer": 0,
+        "explanation": "This is a formal conditional structure: 'Were + subject + to-infinitive' = 'If the negotiations were to break down'."
+    },
+    {
+        "id": "c1_5",
+        "question": "The company's profits have been __ decline for the past three years.",
+        "options": [
+            "on",
+            "in",
+            "at",
+            "with"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The fixed phrase is 'on the decline'."
+    },
+    {
+        "id": "c1_6",
+        "question": "Little __ the implications of their discovery.",
+        "options": [
+            "they did realize",
+            "realized they",
+            "did they realize",
+            "they realized"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Negative adverbs like 'little' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c1_7",
+        "question": "He is __ to have been involved in the scandal.",
+        "options": [
+            "claimed",
+            "said",
+            "told",
+            "spoken"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The passive reporting structure is 'be said to + infinitive'."
+    },
+    {
+        "id": "c1_8",
+        "question": "Such __ the public outcry that the policy was reversed.",
+        "options": [
+            "was",
+            "were",
+            "is",
+            "are"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Such' at the beginning of a sentence can cause inversion. The subject is 'the public outcry' (singular)."
+    },
+    {
+        "id": "c1_9",
+        "question": "The project is __ to be completed by December.",
+        "options": [
+            "scheduled",
+            "timetabled",
+            "agenda",
+            "planned"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The correct collocation is 'scheduled to be'."
+    },
+    {
+        "id": "c1_10",
+        "question": "Had it not been for the quick response, the situation __ catastrophic.",
+        "options": [
+            "would be",
+            "would have been",
+            "will be",
+            "had been"
+        ],
+        "correctAnswer": 1,
+        "explanation": "This is a mixed conditional. The if-clause is about the past, but the consequence is about the present."
+    },
+    {
+        "id": "c1_11",
+        "question": "The agreement was rendered __ by the new regulations.",
+        "options": [
+            "obsolete",
+            "old",
+            "ancient",
+            "out"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Rendered obsolete' is a formal expression meaning 'made outdated'."
+    },
+    {
+        "id": "c1_12",
+        "question": "Not until much later __ the full significance of the event.",
+        "options": [
+            "he understood",
+            "did he understand",
+            "understood he",
+            "he did understand"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative phrases like 'not until' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c1_13",
+        "question": "The theory is __ on shaky ground.",
+        "options": [
+            "said",
+            "regarded",
+            "considered",
+            "reckoned"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The correct collocation is 'considered to be' or 'considered on'."
+    },
+    {
+        "id": "c1_14",
+        "question": "So complex __ that few people could understand it.",
+        "options": [
+            "the system was",
+            "was the system",
+            "system was",
+            "was system"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'So + adjective' at the beginning of a sentence requires inversion."
+    },
+    {
+        "id": "c1_15",
+        "question": "The minister was __ in a corruption scandal.",
+        "options": [
+            "connected",
+            "implicated",
+            "involved",
+            "entangled"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Implicated in' is a strong collocation meaning 'shown to be involved in something wrong'."
+    },
+    {
+        "id": "c1_16",
+        "question": "Only by working together __ a solution.",
+        "options": [
+            "we can find",
+            "can we find",
+            "we found",
+            "found we"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Only + adverb/prepositional phrase' at the beginning of a sentence requires inversion."
+    },
+    {
+        "id": "c1_17",
+        "question": "The findings are __ with previous research in the field.",
+        "options": [
+            "consistent",
+            "compatible",
+            "coherent",
+            "congruent"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The collocation 'consistent with' means 'in agreement with'."
+    },
+    {
+        "id": "c1_18",
+        "question": "Barely __ asleep when the alarm went off.",
+        "options": [
+            "had I fallen",
+            "I had fallen",
+            "I fell",
+            "fell I"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Negative adverbs like 'barely' at the beginning of a sentence require inversion and the past perfect."
+    },
+    {
+        "id": "c1_19",
+        "question": "The company is __ the verge of a major breakthrough.",
+        "options": [
+            "on",
+            "at",
+            "in",
+            "by"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The fixed phrase is 'on the verge of'."
+    },
+    {
+        "id": "c1_20",
+        "question": "Were she __ about the deadline, she would have started earlier.",
+        "options": [
+            "to know",
+            "know",
+            "known",
+            "knowing"
+        ],
+        "correctAnswer": 0,
+        "explanation": "This is an inverted conditional. The full form is 'If she were to know...' (less common for past, but tests the structure)."
+    }
+]

@@ -1,0 +1,134 @@
+═══════════════════════════════════════════════════════════════
+  КАК СКОПИРОВАТЬ ПРОЕКТ С НОУТБУКА НА СЕРВЕР
+═══════════════════════════════════════════════════════════════
+
+Сервер: 89.23.100.163
+Пользователь: root
+Пароль: p@wi^w59YZLMyN
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 1: АВТОМАТИЧЕСКИЙ (САМЫЙ ПРОСТОЙ)
+═══════════════════════════════════════════════════════════════
+
+1. Установите sshpass (если нет):
+   sudo apt-get install sshpass
+
+2. Запустите скрипт:
+   cd "A+ pr/nginx"
+   bash clone_to_server.sh
+
+Готово! Проект скопирован на сервер.
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 2: RSYNC (РЕКОМЕНДУЕТСЯ)
+═══════════════════════════════════════════════════════════════
+
+cd "A+ pr"
+
+# С sshpass (без ввода пароля):
+sshpass -p 'p@wi^w59YZLMyN' rsync -avz --progress \
+  --exclude 'node_modules' \
+  --exclude '__pycache__' \
+  --exclude '.next' \
+  --exclude 'venv' \
+  --exclude '.git' \
+  --exclude 'db.sqlite3' \
+  "A+ pr/" root@89.23.100.163:/var/www/aplus/
+
+# Без sshpass (потребуется ввести пароль):
+rsync -avz --progress \
+  --exclude 'node_modules' \
+  --exclude '__pycache__' \
+  --exclude '.next' \
+  --exclude 'venv' \
+  --exclude '.git' \
+  --exclude 'db.sqlite3' \
+  "A+ pr/" root@89.23.100.163:/var/www/aplus/
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 3: ЧЕРЕЗ АРХИВ
+═══════════════════════════════════════════════════════════════
+
+# На ноутбуке:
+cd "A+ pr"
+tar -czf /tmp/aplus_project.tar.gz \
+  --exclude='node_modules' \
+  --exclude='__pycache__' \
+  --exclude='.next' \
+  --exclude='venv' \
+  --exclude='.git' \
+  --exclude='db.sqlite3' \
+  .
+
+# Копирование на сервер:
+sshpass -p 'p@wi^w59YZLMyN' scp /tmp/aplus_project.tar.gz \
+  root@89.23.100.163:/tmp/
+
+# На сервере распакуйте:
+ssh root@89.23.100.163
+cd /var/www/aplus
+tar -xzf /tmp/aplus_project.tar.gz
+rm /tmp/aplus_project.tar.gz
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 4: ЧЕРЕЗ GIT (если проект в репозитории)
+═══════════════════════════════════════════════════════════════
+
+# На сервере:
+ssh root@89.23.100.163
+cd /var/www/aplus
+git clone <ваш-repo-url> .
+
+# Или если уже есть репозиторий:
+git pull
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 5: ЧЕРЕЗ ГРАФИЧЕСКИЙ КЛИЕНТ (FileZilla, WinSCP)
+═══════════════════════════════════════════════════════════════
+
+Настройки подключения:
+  Хост: 89.23.100.163
+  Пользователь: root
+  Пароль: p@wi^w59YZLMyN
+  Протокол: SFTP
+  Порт: 22
+
+Скопируйте папку "A+ pr" в /var/www/aplus на сервере
+
+═══════════════════════════════════════════════════════════════
+  ЧТО ИСКЛЮЧАЕТСЯ ПРИ КОПИРОВАНИИ
+═══════════════════════════════════════════════════════════════
+
+✓ node_modules/     - установятся через npm install
+✓ __pycache__/      - кеш Python
+✓ .next/            - соберутся через npm run build
+✓ venv/             - создастся на сервере
+✓ .git/             - репозиторий (если не нужен)
+✓ db.sqlite3        - создастся на сервере
+✓ *.pyc             - скомпилированные файлы
+
+═══════════════════════════════════════════════════════════════
+  ПОСЛЕ КОПИРОВАНИЯ НА СЕРВЕРЕ
+═══════════════════════════════════════════════════════════════
+
+1. Настройте Django:
+   cd /var/www/aplus/content_api
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   pip install gunicorn
+   python manage.py migrate
+   python manage.py collectstatic --noinput
+
+2. Настройте Next.js:
+   cd /var/www/aplus/frontenda/Learning-center-A-Client
+   npm install
+   echo "NEXT_PUBLIC_API_URL=https://aplus.tj" > .env.local
+   npm run build
+
+3. Запустите сервисы:
+   systemctl start aplus-django
+   systemctl restart nginx
+
+═══════════════════════════════════════════════════════════════
+

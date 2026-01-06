@@ -1,0 +1,242 @@
+[
+    {
+        "id": "c2_1",
+        "question": "Scarcely __ the door when the phone rang.",
+        "options": [
+            "I had opened",
+            "had I opened",
+            "I opened",
+            "did I open"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Inversion with 'scarcely' requires 'had' + subject + past participle. The structure is 'Scarcely had... when...'"
+    },
+    {
+        "id": "c2_2",
+        "question": "The proposal was __ aside due to lack of funding.",
+        "options": [
+            "placed",
+            "put",
+            "set",
+            "laid"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The phrasal verb 'set aside' means 'to discard or reject'."
+    },
+    {
+        "id": "c2_3",
+        "question": "No sooner __ than the protests began.",
+        "options": [
+            "the law was passed",
+            "was the law passed",
+            "the law had been passed",
+            "had the law been passed"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'No sooner' requires inversion and is usually followed by 'than'. The structure is 'No sooner + auxiliary + subject + main verb...'"
+    },
+    {
+        "id": "c2_4",
+        "question": "His actions are __ of a desperate man.",
+        "options": [
+            "those",
+            "that",
+            "ones",
+            "them"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The correct structure is 'those of' to refer back to 'actions' in a formal comparison."
+    },
+    {
+        "id": "c2_5",
+        "question": "Such __ the complexity of the issue that a simple solution was impossible.",
+        "options": [
+            "was",
+            "were",
+            "is",
+            "are"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Such' at the beginning of a sentence can cause inversion. The subject is 'the complexity' (singular)."
+    },
+    {
+        "id": "c2_6",
+        "question": "The committee saw __ the objections and approved the plan regardless.",
+        "options": [
+            "through",
+            "past",
+            "over",
+            "beyond"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'See through' in this context means 'to not be deceived by' or 'to recognize the true nature of'."
+    },
+    {
+        "id": "c2_7",
+        "question": "Were he __, he would have contested the decision.",
+        "options": [
+            "so inclined",
+            "so incline",
+            "such inclined",
+            "such incline"
+        ],
+        "correctAnswer": 0,
+        "explanation": "This is an inverted conditional with a fixed phrase. The full form is 'If he were so inclined...'"
+    },
+    {
+        "id": "c2_8",
+        "question": "The agreement is __ null and void.",
+        "options": [
+            "hereby",
+            "herewith",
+            "herein",
+            "hereof"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Hereby' is a formal adverb meaning 'by this means or action'."
+    },
+    {
+        "id": "c2_9",
+        "question": "Little __ that their research would revolutionize the field.",
+        "options": [
+            "they suspected",
+            "did they suspect",
+            "suspected they",
+            "they did suspect"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative adverbs like 'little' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c2_10",
+        "question": "The theory __ close scrutiny.",
+        "options": [
+            "bears",
+            "stands",
+            "holds",
+            "tolerates"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The collocation 'bear scrutiny' means 'to be able to withstand careful examination'."
+    },
+    {
+        "id": "c2_11",
+        "question": "Not for a moment __ that she would succeed.",
+        "options": [
+            "I doubted",
+            "did I doubt",
+            "doubted I",
+            "I did doubt"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative phrases like 'not for a moment' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c2_12",
+        "question": "The document was __ with the authorities.",
+        "options": [
+            "lodged",
+            "filed",
+            "registered",
+            "recorded"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Lodge with' is a formal expression meaning 'to formally submit something to an authority'."
+    },
+    {
+        "id": "c2_13",
+        "question": "So __ was the response that we were overwhelmed.",
+        "options": [
+            "overwhelming",
+            "overwhelmed",
+            "overwhelm",
+            "overwhelmingly"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The structure is 'So + adjective + auxiliary + subject...' with inversion."
+    },
+    {
+        "id": "c2_14",
+        "question": "The judge ruled the evidence __.",
+        "options": [
+            "inadmissible",
+            "unadmissible",
+            "nonadmissible",
+            "disadmissible"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Inadmissible' is the correct legal term for evidence that cannot be accepted in court."
+    },
+    {
+        "id": "c2_15",
+        "question": "Only when all the facts were known __ a proper assessment.",
+        "options": [
+            "could we make",
+            "we could make",
+            "we made",
+            "made we"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Only + adverb clause' at the beginning of a sentence requires inversion in the main clause."
+    },
+    {
+        "id": "c2_16",
+        "question": "His argument doesn't __ water.",
+        "options": [
+            "hold",
+            "carry",
+            "take",
+            "have"
+        ],
+        "correctAnswer": 0,
+        "explanation": "The idiom 'hold water' means 'to be logical or reasonable'."
+    },
+    {
+        "id": "c2_17",
+        "question": "At no time __ aware of the situation.",
+        "options": [
+            "the director was",
+            "was the director",
+            "the director has been",
+            "has the director been"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Negative phrases like 'at no time' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c2_18",
+        "question": "The treaty is __ to ratification by all member states.",
+        "options": [
+            "subject",
+            "liable",
+            "prone",
+            "inclined"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Subject to' in legal contexts means 'conditional upon'."
+    },
+    {
+        "id": "c2_19",
+        "question": "Never before __ such a complex ethical dilemma.",
+        "options": [
+            "have we faced",
+            "we have faced",
+            "we faced",
+            "faced we"
+        ],
+        "correctAnswer": 0,
+        "explanation": "Negative adverbs like 'never' at the beginning of a sentence require inversion."
+    },
+    {
+        "id": "c2_20",
+        "question": "The decision was __ appeal.",
+        "options": [
+            "outside",
+            "beyond",
+            "above",
+            "over"
+        ],
+        "correctAnswer": 1,
+        "explanation": "'Beyond appeal' is a fixed phrase meaning 'cannot be appealed'."
+    }
+]

@@ -1,0 +1,242 @@
+[
+    {
+        "id": "a2_1",
+        "question": "I __ to the cinema yesterday.",
+        "options": [
+            "go",
+            "went",
+            "have gone",
+            "was going"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the Past Simple ('went') for completed actions in the past."
+    },
+    {
+        "id": "a2_2",
+        "question": "She was watching TV when I __.",
+        "options": [
+            "arrive",
+            "arrived",
+            "was arriving",
+            "have arrived"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the Past Simple for a short action that interrupts a longer one in the past (Past Continuous)."
+    },
+    {
+        "id": "a2_3",
+        "question": "This is the restaurant __ we had dinner last week.",
+        "options": [
+            "which",
+            "where",
+            "who",
+            "when"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use 'where' to talk about a place."
+    },
+    {
+        "id": "a2_4",
+        "question": "If it rains tomorrow, we __ the picnic.",
+        "options": [
+            "cancel",
+            "will cancel",
+            "would cancel",
+            "canceled"
+        ],
+        "correctAnswer": 1,
+        "explanation": "First Conditional: 'If + Present Simple, ... will + infinitive' for real future situations."
+    },
+    {
+        "id": "a2_5",
+        "question": "He is __ than his brother.",
+        "options": [
+            "tall",
+            "taller",
+            "tallest",
+            "more tall"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the comparative form ('taller') for comparing two people or things."
+    },
+    {
+        "id": "a2_6",
+        "question": "You __ wear a seatbelt in the car. It's the law.",
+        "options": [
+            "can",
+            "may",
+            "must",
+            "should"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use 'must' for strong obligation or rules."
+    },
+    {
+        "id": "a2_7",
+        "question": "I'm not used to __ early.",
+        "options": [
+            "wake up",
+            "waking up",
+            "woke up",
+            "have woken up"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The structure 'be used to' is followed by a gerund (-ing form)."
+    },
+    {
+        "id": "a2_8",
+        "question": "How long __ your friend?",
+        "options": [
+            "do you know",
+            "have you known",
+            "you know",
+            "you have known"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the Present Perfect ('have you known') with 'how long' to ask about a period of time that continues until now."
+    },
+    {
+        "id": "a2_9",
+        "question": "I asked him __ he was coming to the party.",
+        "options": [
+            "that",
+            "if",
+            "what",
+            "when"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use 'if' (or 'whether') in reported yes/no questions."
+    },
+    {
+        "id": "a2_10",
+        "question": "Let's go for a walk, __?",
+        "options": [
+            "do we",
+            "shall we",
+            "are we",
+            "let we"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The question tag for 'Let's' is 'shall we'."
+    },
+    {
+        "id": "a2_11",
+        "question": "I have __ finished my homework. I did it an hour ago.",
+        "options": [
+            "yet",
+            "just",
+            "already",
+            "still"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use 'already' in positive sentences to say something happened sooner than expected."
+    },
+    {
+        "id": "a2_12",
+        "question": "Could you __ the music? It's too loud.",
+        "options": [
+            "turn down",
+            "turn on",
+            "turn up",
+            "turn over"
+        ],
+        "correctAnswer": 0,
+        "explanation": "'Turn down' means to reduce the volume."
+    },
+    {
+        "id": "a2_13",
+        "question": "There isn't __ milk left in the fridge.",
+        "options": [
+            "many",
+            "a few",
+            "much",
+            "some"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use 'much' with uncountable nouns (like 'milk') in negative sentences."
+    },
+    {
+        "id": "a2_14",
+        "question": "She speaks very __.",
+        "options": [
+            "quiet",
+            "quietly",
+            "quieten",
+            "quietness"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use an adverb ('quietly') to describe a verb ('speaks')."
+    },
+    {
+        "id": "a2_15",
+        "question": "This book is __. It belongs to me.",
+        "options": [
+            "my",
+            "mine",
+            "me",
+            "I"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use the possessive pronoun 'mine' to replace 'my book'."
+    },
+    {
+        "id": "a2_16",
+        "question": "We __ for the test when the lights went out.",
+        "options": [
+            "study",
+            "studied",
+            "were studying",
+            "have studied"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use the Past Continuous ('were studying') for an action in progress at a specific time in the past."
+    },
+    {
+        "id": "a2_17",
+        "question": "You look tired. You __ go to bed early.",
+        "options": [
+            "must",
+            "have to",
+            "should",
+            "need"
+        ],
+        "correctAnswer": 2,
+        "explanation": "Use 'should' to give advice or make a recommendation."
+    },
+    {
+        "id": "a2_18",
+        "question": "I'm really __ in ancient history.",
+        "options": [
+            "interesting",
+            "interested",
+            "interest",
+            "interestingly"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use 'interested' to describe how someone feels. Use 'interesting' to describe the thing that causes the feeling."
+    },
+    {
+        "id": "a2_19",
+        "question": "He has __ to the supermarket. He'll be back soon.",
+        "options": [
+            "been",
+            "gone",
+            "went",
+            "go"
+        ],
+        "correctAnswer": 1,
+        "explanation": "Use 'has gone' to mean someone is at the place now or on their way there."
+    },
+    {
+        "id": "a2_20",
+        "question": "I enjoy __ to classical music.",
+        "options": [
+            "listen",
+            "to listen",
+            "listening",
+            "listened"
+        ],
+        "correctAnswer": 2,
+        "explanation": "The verb 'enjoy' is followed by a gerund (-ing form)."
+    }
+]

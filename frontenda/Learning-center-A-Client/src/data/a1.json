@@ -1,0 +1,147 @@
+[
+  {
+    "id": "a1_1",
+    "question": "What is your name?",
+    "options": [
+      "My name is John",
+      "My name John",
+      "I name is John",
+      "Name is John"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The correct structure is 'My name is [name]'"
+  },
+  {
+    "id": "a1_2",
+    "question": "How __ you?",
+    "options": ["are", "is", "am", "be"],
+    "correctAnswer": 0,
+    "explanation": "Use 'are' with 'you'"
+  },
+  {
+    "id": "a1_3",
+    "question": "This is __ book.",
+    "options": ["a", "an", "the"],
+    "correctAnswer": 0,
+    "explanation": "Use 'a' before consonant sounds"
+  },
+  {
+    "id": "a1_4",
+    "question": "I __ from Russia.",
+    "options": ["am", "is", "are", "be"],
+    "correctAnswer": 0,
+    "explanation": "Use 'am' with 'I'"
+  },
+  {
+    "id": "a1_5",
+    "question": "She __ a teacher.",
+    "options": ["am", "is", "are", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use 'is' with third person singular (he, she, it)"
+  },
+  {
+    "id": "a1_6",
+    "question": "__ do you live?",
+    "options": ["What", "Where", "When", "Why"],
+    "correctAnswer": 1,
+    "explanation": "Use 'Where' to ask about location"
+  },
+  {
+    "id": "a1_7",
+    "question": "I have __ apple.",
+    "options": ["a", "an", "the"],
+    "correctAnswer": 1,
+    "explanation": "Use 'an' before vowel sounds"
+  },
+  {
+    "id": "a1_8",
+    "question": "What __ is it?",
+    "options": ["time", "times", "timing", "timer"],
+    "correctAnswer": 0,
+    "explanation": "Use 'time' to ask about the time"
+  },
+  {
+    "id": "a1_9",
+    "question": "There __ two cats.",
+    "options": ["is", "are", "am", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use 'are' with plural nouns"
+  },
+  {
+    "id": "a1_10",
+    "question": "I __ like coffee.",
+    "options": ["don't", "doesn't", "am not", "not"],
+    "correctAnswer": 0,
+    "explanation": "Use 'don't' with 'I' for negative present simple"
+  },
+  {
+    "id": "a1_11",
+    "question": "My sister __ 25 years old.",
+    "options": ["have", "has", "is", "are"],
+    "correctAnswer": 2,
+    "explanation": "Use 'is' with age expressions"
+  },
+  {
+    "id": "a1_12",
+    "question": "__ you speak English?",
+    "options": ["Are", "Do", "Can", "Is"],
+    "correctAnswer": 2,
+    "explanation": "Use 'Can' to ask about ability"
+  },
+  {
+    "id": "a1_13",
+    "question": "The book is __ the table.",
+    "options": ["in", "on", "at", "under"],
+    "correctAnswer": 1,
+    "explanation": "Use 'on' for surfaces"
+  },
+  {
+    "id": "a1_14",
+    "question": "I go __ work by bus.",
+    "options": ["to", "at", "in", "on"],
+    "correctAnswer": 0,
+    "explanation": "Use 'to' with direction/destination"
+  },
+  {
+    "id": "a1_15",
+    "question": "What color __ your car?",
+    "options": ["are", "is", "am", "be"],
+    "correctAnswer": 1,
+    "explanation": "Use 'is' with singular nouns like 'car'"
+  },
+  {
+    "id": "a1_16",
+    "question": "I usually __ breakfast at 8 am.",
+    "options": ["have", "has", "having", "had"],
+    "correctAnswer": 0,
+    "explanation": "Use 'have' with 'I' in present simple"
+  },
+  {
+    "id": "a1_17",
+    "question": "She __ TV every evening.",
+    "options": ["watch", "watches", "watching", "watched"],
+    "correctAnswer": 1,
+    "explanation": "Add -es to verbs with third person singular"
+  },
+  {
+    "id": "a1_18",
+    "question": "My birthday is __ May.",
+    "options": ["on", "in", "at", "by"],
+    "correctAnswer": 1,
+    "explanation": "Use 'in' with months"
+  },
+  {
+    "id": "a1_19",
+    "question": "How __ children do you have?",
+    "options": ["much", "many", "old", "long"],
+    "correctAnswer": 1,
+    "explanation": "Use 'many' with countable nouns"
+  },
+  {
+    "id": "a1_20",
+    "question": "I __ hungry.",
+    "options": ["have", "has", "am", "is"],
+    "correctAnswer": 2,
+    "explanation": "Use 'am' with adjectives and 'I'"
+  }
+]

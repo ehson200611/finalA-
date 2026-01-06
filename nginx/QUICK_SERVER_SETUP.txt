@@ -1,0 +1,136 @@
+═══════════════════════════════════════════════════════════════
+  БЫСТРАЯ НАСТРОЙКА СЕРВЕРА
+═══════════════════════════════════════════════════════════════
+
+Вы на сервере и нужно настроить окружение.
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 1: УСТАНОВКА ПАКЕТОВ
+═══════════════════════════════════════════════════════════════
+
+apt update && apt upgrade -y
+apt install -y python3-pip python3-venv nginx postgresql postgresql-contrib git build-essential curl
+
+# Установка Node.js 18+
+curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+apt install -y nodejs
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 2: СОЗДАНИЕ ДИРЕКТОРИИ ПРОЕКТА
+═══════════════════════════════════════════════════════════════
+
+mkdir -p /var/www/aplus
+chown -R $USER:$USER /var/www/aplus
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 3: НАСТРОЙКА POSTGRESQL
+═══════════════════════════════════════════════════════════════
+
+# Если postgres пользователь не существует, установите PostgreSQL
+apt install -y postgresql postgresql-contrib
+
+# Создание базы данных
+sudo -u postgres psql << 'EOF'
+CREATE DATABASE aplus_db;
+CREATE USER aplus_user WITH PASSWORD 'your_secure_password_here';
+ALTER ROLE aplus_user SET client_encoding TO 'utf8';
+ALTER ROLE aplus_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE aplus_user SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE aplus_db TO aplus_user;
+\q
+EOF
+
+# Или вручную:
+# sudo -u postgres psql
+# CREATE DATABASE aplus_db;
+# CREATE USER aplus_user WITH PASSWORD 'your_password';
+# GRANT ALL PRIVILEGES ON DATABASE aplus_db TO aplus_user;
+# \q
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 4: КОПИРОВАНИЕ ПРОЕКТА
+═══════════════════════════════════════════════════════════════
+
+# С вашего ноутбука выполните:
+cd "A+ pr"
+rsync -avz --exclude 'node_modules' --exclude '__pycache__' \
+  --exclude '.next' --exclude 'venv' --exclude '.git' \
+  "A+ pr/" root@89.23.100.163:/var/www/aplus/
+
+# Или используйте скрипт:
+bash nginx/clone_to_server.sh
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 5: НАСТРОЙКА DJANGO
+═══════════════════════════════════════════════════════════════
+
+cd /var/www/aplus/content_api
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install gunicorn
+
+# Обновите settings.py:
+nano content_api/settings.py
+# Установите:
+# - DEBUG = False
+# - ALLOWED_HOSTS = ['aplus.tj', 'www.aplus.tj', '89.23.100.163']
+# - Настройте DATABASES для PostgreSQL
+
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 6: НАСТРОЙКА NEXT.JS
+═══════════════════════════════════════════════════════════════
+
+cd /var/www/aplus/frontenda/Learning-center-A-Client
+npm install
+echo "NEXT_PUBLIC_API_URL=https://aplus.tj" > .env.local
+npm run build
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 7: УСТАНОВКА NGINX И SSL
+═══════════════════════════════════════════════════════════════
+
+# Скопируйте конфигурацию nginx
+cp /var/www/aplus/nginx/nginx.conf /etc/nginx/sites-available/aplus
+ln -s /etc/nginx/sites-available/aplus /etc/nginx/sites-enabled/
+
+# Установите SSL сертификаты
+mkdir -p /etc/nginx/ssl
+cp /var/www/aplus/nginx/ssl/aplus.tj.key.txt /etc/nginx/ssl/aplus.tj.key
+cp /var/www/aplus/nginx/ssl/aplus.tj.crt.txt /etc/nginx/ssl/aplus.tj.crt
+chmod 600 /etc/nginx/ssl/aplus.tj.key
+chmod 644 /etc/nginx/ssl/aplus.tj.crt
+
+# Обновите пути в nginx.conf
+nano /etc/nginx/sites-available/aplus
+# Замените пути с пробелами на /var/www/aplus/
+
+# Проверьте конфигурацию
+nginx -t
+
+# Перезапустите nginx
+systemctl restart nginx
+
+═══════════════════════════════════════════════════════════════
+  ШАГ 8: НАСТРОЙКА SYSTEMD SERVICE
+═══════════════════════════════════════════════════════════════
+
+# Обновите пути в aplus-django.service
+nano /var/www/aplus/nginx/aplus-django.service
+# Замените пути на /var/www/aplus/
+
+# Установите service
+cp /var/www/aplus/nginx/aplus-django.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable aplus-django
+systemctl start aplus-django
+
+# Проверьте статус
+systemctl status aplus-django
+
+═══════════════════════════════════════════════════════════════
+

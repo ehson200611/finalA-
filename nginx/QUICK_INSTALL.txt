@@ -1,0 +1,87 @@
+═══════════════════════════════════════════════════════════════
+  БЫСТРАЯ УСТАНОВКА НА СЕРВЕР 89.23.100.163
+═══════════════════════════════════════════════════════════════
+
+Выполните эти команды в терминале по порядку:
+
+───────────────────────────────────────────────────────────────
+ШАГ 1: Установка sshpass
+───────────────────────────────────────────────────────────────
+sudo apt-get install sshpass
+
+───────────────────────────────────────────────────────────────
+ШАГ 2: Создание архива с конфигурацией
+───────────────────────────────────────────────────────────────
+cd "A+ pr"
+tar -czf /tmp/nginx_config.tar.gz \
+  nginx/nginx.conf \
+  nginx/gunicorn_config.py \
+  nginx/aplus-django.service \
+  nginx/ssl/ \
+  nginx/deploy_to_server.sh \
+  nginx/install_ssl.sh
+
+───────────────────────────────────────────────────────────────
+ШАГ 3: Копирование на сервер
+───────────────────────────────────────────────────────────────
+sshpass -p 'p@wi^w59YZLMyN' scp -o StrictHostKeyChecking=no \
+  /tmp/nginx_config.tar.gz root@89.23.100.163:/tmp/
+
+───────────────────────────────────────────────────────────────
+ШАГ 4: Выполнение установки на сервере
+───────────────────────────────────────────────────────────────
+sshpass -p 'p@wi^w59YZLMyN' ssh -o StrictHostKeyChecking=no \
+  root@89.23.100.163 \
+  'cd /tmp && tar -xzf nginx_config.tar.gz && cd nginx && \
+   chmod +x deploy_to_server.sh install_ssl.sh && \
+   bash deploy_to_server.sh'
+
+───────────────────────────────────────────────────────────────
+ШАГ 5: Копирование файлов проекта
+───────────────────────────────────────────────────────────────
+rsync -avz \
+  --exclude 'node_modules' \
+  --exclude '__pycache__' \
+  --exclude '.next' \
+  --exclude 'venv' \
+  --exclude '.git' \
+  --exclude 'db.sqlite3' \
+  "A+ pr/" root@89.23.100.163:/var/www/aplus/
+
+───────────────────────────────────────────────────────────────
+ШАГ 6: Настройка на сервере (выполните на сервере)
+───────────────────────────────────────────────────────────────
+ssh root@89.23.100.163
+
+# Django
+cd /var/www/aplus/content_api
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install gunicorn
+
+# Обновите settings.py:
+# - DEBUG = False
+# - ALLOWED_HOSTS = ['aplus.tj', 'www.aplus.tj', '89.23.100.163']
+
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser
+
+# Next.js
+cd /var/www/aplus/frontenda/Learning-center-A-Client
+npm install
+echo "NEXT_PUBLIC_API_URL=https://aplus.tj" > .env.local
+npm run build
+
+# Запуск
+systemctl start aplus-django
+systemctl restart nginx
+
+# Проверка
+systemctl status aplus-django
+systemctl status nginx
+curl -I https://aplus.tj
+
+═══════════════════════════════════════════════════════════════
+

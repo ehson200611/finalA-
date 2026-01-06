@@ -1,0 +1,87 @@
+═══════════════════════════════════════════════════════════════
+  НАЧНИТЕ ОТСЮДА - УСТАНОВКА НА СЕРВЕР
+═══════════════════════════════════════════════════════════════
+
+Сервер: 89.23.100.163
+Пользователь: root
+Пароль: p@wi^w59YZLMyN
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 1: АВТОМАТИЧЕСКАЯ УСТАНОВКА (РЕКОМЕНДУЕТСЯ)
+═══════════════════════════════════════════════════════════════
+
+1. Установите sshpass:
+   sudo apt-get install sshpass
+
+2. Запустите скрипт установки:
+   cd "A+ pr/nginx"
+   bash run_install.sh
+
+3. Скопируйте файлы проекта:
+   bash copy_project.sh
+
+4. Подключитесь к серверу и выполните настройку:
+   ssh root@89.23.100.163
+   (см. инструкции ниже в разделе "Настройка на сервере")
+
+═══════════════════════════════════════════════════════════════
+  СПОСОБ 2: РУЧНАЯ УСТАНОВКА
+═══════════════════════════════════════════════════════════════
+
+Следуйте инструкциям в файле: QUICK_INSTALL.txt
+
+Или выполните команды из файла: INSTALL_COMMANDS.sh
+
+═══════════════════════════════════════════════════════════════
+  НАСТРОЙКА НА СЕРВЕРЕ (после копирования файлов)
+═══════════════════════════════════════════════════════════════
+
+Подключитесь к серверу:
+  ssh root@89.23.100.163
+
+Выполните на сервере:
+
+# 1. Настройка Django
+cd /var/www/aplus/content_api
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install gunicorn
+
+# Обновите settings.py:
+nano content_api/settings.py
+# Установите:
+# - DEBUG = False
+# - ALLOWED_HOSTS = ['aplus.tj', 'www.aplus.tj', '89.23.100.163']
+
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py createsuperuser
+
+# 2. Настройка Next.js
+cd /var/www/aplus/frontenda/Learning-center-A-Client
+npm install
+echo "NEXT_PUBLIC_API_URL=https://aplus.tj" > .env.local
+npm run build
+
+# 3. Запуск сервисов
+systemctl start aplus-django
+systemctl restart nginx
+
+# 4. Проверка
+systemctl status aplus-django
+systemctl status nginx
+curl -I https://aplus.tj
+
+═══════════════════════════════════════════════════════════════
+  ФАЙЛЫ И ИНСТРУКЦИИ
+═══════════════════════════════════════════════════════════════
+
+- QUICK_INSTALL.txt - Пошаговая инструкция
+- run_install.sh - Автоматический скрипт установки
+- copy_project.sh - Скрипт копирования проекта
+- REMOTE_INSTALL.md - Подробная документация
+- DEPLOYMENT.md - Полная инструкция по развертыванию
+
+═══════════════════════════════════════════════════════════════
+

@@ -1,0 +1,122 @@
+[
+  {
+    "question": "Not only __ he clever, but also hardworking.",
+    "options": ["is", "was", "he", "does"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'not only'"
+  },
+  {
+    "question": "Hardly __ he arrived when the guests left.",
+    "options": ["did", "had", "has", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'hardly'"
+  },
+  {
+    "question": "Scarcely __ I entered than the phone rang.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'scarcely'"
+  },
+  {
+    "question": "I would rather you __ your decision.",
+    "options": ["change", "changed", "changing", "have changed"],
+    "correctAnswer": 1,
+    "explanation": "Would rather + past simple"
+  },
+  {
+    "question": "She insisted that he __ there on time.",
+    "options": ["be", "is", "was", "being"],
+    "correctAnswer": 0,
+    "explanation": "Subjunctive after 'insist that'"
+  },
+  {
+    "question": "Had I known, I __ helped sooner.",
+    "options": ["would", "would have", "will", "had"],
+    "correctAnswer": 1,
+    "explanation": "Third conditional"
+  },
+  {
+    "question": "Only after __ the report did I realize the mistake.",
+    "options": ["reading", "read", "have read", "to read"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'only after'"
+  },
+  {
+    "question": "I wish I __ learned French.",
+    "options": ["have", "had", "will have", "having"],
+    "correctAnswer": 1,
+    "explanation": "Past perfect in 'wish' for regret"
+  },
+  {
+    "question": "He acted as if he __ the solution.",
+    "options": ["knows", "knew", "had known", "knowing"],
+    "correctAnswer": 1,
+    "explanation": "As if + past for unreal present"
+  },
+  {
+    "question": "It’s crucial that she __ informed.",
+    "options": ["be", "is", "was", "been"],
+    "correctAnswer": 0,
+    "explanation": "Subjunctive mood for necessity"
+  },
+  {
+    "question": "I hardly __ seen such chaos.",
+    "options": ["have", "had", "has", "having"],
+    "correctAnswer": 0,
+    "explanation": "Present perfect for experience"
+  },
+  {
+    "question": "Were I __, I would accept the challenge.",
+    "options": ["brave", "braver", "bravest", "bravely"],
+    "correctAnswer": 0,
+    "explanation": "Inversion in conditional"
+  },
+  {
+    "question": "No sooner __ the plane landed than it started snowing.",
+    "options": ["had", "have", "did", "was"],
+    "correctAnswer": 0,
+    "explanation": "Inversion after 'no sooner'"
+  },
+  {
+    "question": "She demanded that he __ the mistake immediately.",
+    "options": ["correct", "corrected", "correcting", "have corrected"],
+    "correctAnswer": 0,
+    "explanation": "Subjunctive after 'demand'"
+  },
+  {
+    "question": "I would rather you __ more careful.",
+    "options": ["be", "were", "are", "was"],
+    "correctAnswer": 1,
+    "explanation": "Would rather + past simple"
+  },
+  {
+    "question": "Little __ I realize the consequences.",
+    "options": ["did", "does", "do", "done"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'little'"
+  },
+  {
+    "question": "I couldn’t help __ when I heard the joke.",
+    "options": ["laugh", "laughing", "to laugh", "laughed"],
+    "correctAnswer": 1,
+    "explanation": "Couldn't help + gerund"
+  },
+  {
+    "question": "Seldom __ we experience such difficulties.",
+    "options": ["do", "did", "have", "had"],
+    "correctAnswer": 0,
+    "explanation": "Inversion with 'seldom'"
+  },
+  {
+    "question": "If he __ earlier, he would have caught the train.",
+    "options": ["had left", "left", "leaves", "was leaving"],
+    "correctAnswer": 0,
+    "explanation": "Third conditional"
+  },
+  {
+    "question": "It’s high time they __ started the project.",
+    "options": ["have", "had", "will", "would"],
+    "correctAnswer": 1,
+    "explanation": "It’s high time + past simple"
+  }
+]
