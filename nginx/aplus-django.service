@@ -1,4 +1,14 @@
-[Unit]
+sudo systemctl status aplus-django
+(venv) root@msk-1-vm-vrpd:~/finalA-# sudo systemctl status aplus-django
+● aplus-django.service - A+ Learning Center Django Application
+     Loaded: loaded (/etc/systemd/system/aplus-django.service; enabled; preset: enabled)
+     Active: activating (auto-restart) (Result: exit-code) since Tue 2026-01-06 19:32:10 UTC; 3s ago
+    Process: 218719 ExecStart=/root/finalA-/content_api/venv/bin/gunicorn --config /root/finalA-/nginx/gunicorn_config.py content_api.wsgi:app>
+   Main PID: 218719 (code=exited, status=200/CHDIR)
+        CPU: 3ms
+
+Jan 06 19:32:10 msk-1-vm-vrpd systemd[1]: Failed to start aplus-django.service - A+ Learning Center Django Application.
+lines 1-8/8 (END)[Unit]
 Description=A+ Learning Center Django Application
 After=network.target
 
