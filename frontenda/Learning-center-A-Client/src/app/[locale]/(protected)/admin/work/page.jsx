@@ -34,7 +34,7 @@ const Resume = () => {
 
   // API hooks
   const { data: resumes, isLoading, error, refetch } = useGetVacancyWorkQuery();
-  const { data: meProfile, isFetching } = useGetMeProfileQuery();
+  const { data: meProfile } = useGetMeProfileQuery();
 
   const [deleteResume, { isLoading: isDeleting, error: deleteError }] =
     useDeleteVacancyWorkMutation();

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useTheme } from "next-themes";
 import {
   useGetEnglishCoursesQuery,
@@ -50,475 +50,10 @@ import { useGetMeProfileQuery } from "@/store/slices/profile";
 import Loading from "@/components/loading/loading";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-// Delete Confirmation Modal Component using MUI
-const DeleteConfirmationModal = ({
-  isOpen,
-  onClose,
-  onConfirm,
-  course,
-  category,
-}) => {
-  const { theme } = useTheme();
-  const t = useTranslations("courses");
-
-  const getField = (field) => {
-    if (!field) return "";
-    return typeof field === "object" ? field.ru || "" : field;
-  };
-
-  return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      maxWidth="sm"
-      fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: "16px",
-          bgcolor: theme === "dark" ? "grey.800" : "white",
-          color: theme === "dark" ? "white" : "black",
-        },
-      }}
-    >
-      <DialogTitle sx={{ p: 3, pb: 2, position: "relative" }}>
-        <IconButton
-          onClick={onClose}
-          sx={{
-            position: "absolute",
-            right: 12,
-            top: 12,
-            color: theme === "dark" ? "grey.400" : "grey.600",
-          }}
-        >
-          <X size={20} />
-        </IconButton>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-            mb: 2,
-          }}
-        >
-          <Box
-            sx={{
-              width: 64,
-              height: 64,
-              bgcolor: theme === "dark" ? "error.dark" : "error.light",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              mb: 2,
-            }}
-          >
-            <AlertTriangle sx={{ color: "error.main", fontSize: 32 }} />
-          </Box>
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
-            {t("pDelete")}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t("ansDelete")}
-          </Typography>
-        </Box>
-      </DialogTitle>
-
-      <DialogContent sx={{ p: 3, pt: 0 }}>
-        <Card
-          sx={{
-            borderRadius: "12px",
-            p: 3,
-            mb: 3,
-            bgcolor: theme === "dark" ? "grey.700" : "grey.50",
-          }}
-        >
-          <Typography variant="subtitle1" fontWeight="semibold" sx={{ mb: 1 }}>
-            {getField(course?.title)}
-          </Typography>
-          <Stack spacing={0.5}>
-            <Typography variant="body2" color="text.secondary">
-              {t("level")}: {getField(course?.level)}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {t("category")}:{" "}
-              {category === "english"
-                ? "Английский"
-                : category === "russian"
-                ? "Русский"
-                : "Подготовка к школе"}
-            </Typography>
-          </Stack>
-        </Card>
-      </DialogContent>
-
-      <DialogActions sx={{ p: 3, pt: 0 }}>
-        <Button
-          onClick={onClose}
-          variant="outlined"
-          sx={{
-            borderColor: theme === "dark" ? "grey.600" : "grey.300",
-            color: theme === "dark" ? "grey.300" : "grey.700",
-            "&:hover": {
-              bgcolor: theme === "dark" ? "grey.700" : "grey.100",
-              borderColor: theme === "dark" ? "grey.500" : "grey.400",
-            },
-            fontWeight: "semibold",
-          }}
-        >
-          {t("stop")}
-        </Button>
-        <Button
-          onClick={onConfirm}
-          variant="contained"
-          startIcon={<Trash2 size={16} />}
-          sx={{
-            bgcolor: "error.main",
-            color: "white",
-            fontWeight: "bold",
-            "&:hover": {
-              bgcolor: "error.dark",
-            },
-          }}
-        >
-          {t("Delete")}
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
-
-// Loading Spinner Component
-// const LoadingSpinner = () => (
-//   <Box
-//     sx={{
-//       display: "flex",
-//       justifyContent: "center",
-//       alignItems: "center",
-//       minHeight: "100vh",
-//     }}
-//   >
-//     <CircularProgress sx={{ color: "#34d3d6" }} />
-//   </Box>
-// );
-
-// Add/Edit Course Modal Component using MUI
-const CourseModal = ({
-  isOpen,
-  onClose,
-  editingCourse,
-  selectedCategory,
-  setSelectedCategory,
-  newCourse,
-  setNewCourse,
-  activeLang,
-  setActiveLang,
-  handleSaveCourse,
-  isSaving,
-  theme,
-  t,
-}) => {
-  return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      maxWidth="sm"
-      fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: "16px",
-          bgcolor: theme === "dark" ? "grey.800" : "white",
-          color: theme === "dark" ? "white" : "black",
-          maxHeight: "90vh",
-        },
-      }}
-    >
-      {isSaving && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            bgcolor: "rgba(0,0,0,0.2)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "16px",
-            zIndex: 1,
-          }}
-        >
-          <CircularProgress sx={{ color: "#34d3d6" }} />
-        </Box>
-      )}
-
-      <DialogTitle sx={{ p: 3, pb: 2, position: "relative" }}>
-        <IconButton
-          onClick={onClose}
-          disabled={isSaving}
-          sx={{
-            position: "absolute",
-            right: 12,
-            top: 12,
-            color: theme === "dark" ? "grey.400" : "grey.600",
-          }}
-        >
-          <X size={24} />
-        </IconButton>
-        <Typography
-          component="span"
-          variant="h6"
-          fontWeight="bold"
-          textAlign="center"
-        >
-          {editingCourse ? t("editCourse") : t("addCourse")}
-        </Typography>
-      </DialogTitle>
-
-      <DialogContent dividers sx={{ p: 3 }}>
-        {!editingCourse && (
-          <FormControl fullWidth sx={{ mb: 3 }}>
-            <InputLabel>{t("category")}</InputLabel>
-            <Select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              label={t("category")}
-              disabled={isSaving}
-              sx={{
-                bgcolor: theme === "dark" ? "grey.700" : "white",
-              }}
-            >
-              <MenuItem value="english">{t("english")}</MenuItem>
-              <MenuItem value="russian">{t("russian")}</MenuItem>
-              <MenuItem value="preschools">{t("preSchool")}</MenuItem>
-            </Select>
-          </FormControl>
-        )}
-
-        <Stack
-          direction="row"
-          spacing={1}
-          justifyContent="center"
-          sx={{ mb: 3 }}
-        >
-          {["ru", "en", "tj"].map((lang) => (
-            <Button
-              key={lang}
-              onClick={() => setActiveLang(lang)}
-              disabled={isSaving}
-              variant={activeLang === lang ? "contained" : "outlined"}
-              startIcon={<LanguageIcon />}
-              sx={{
-                minWidth: "100px",
-                bgcolor: activeLang === lang ? "#34d3d6" : "transparent",
-                color:
-                  activeLang === lang
-                    ? "white"
-                    : theme === "dark"
-                    ? "white"
-                    : "grey.800",
-                borderColor: theme === "dark" ? "grey.600" : "grey.300",
-                "&:hover": {
-                  bgcolor:
-                    activeLang === lang
-                      ? "#2ab3b6"
-                      : theme === "dark"
-                      ? "grey.700"
-                      : "grey.100",
-                },
-              }}
-            >
-              {lang.toUpperCase()}
-            </Button>
-          ))}
-        </Stack>
-
-        <Grid
-          sx={{
-            "& > *": { margin: 2 }, // Фосилаи байни ҳама фарзандҳо
-          }}
-        >
-          {[
-            { key: "title", label: t("title"), required: true },
-            { key: "duration", label: t("duration") },
-            { key: "academicSupport", label: t("academicSupport") },
-            { key: "clubs", label: t("clubs") },
-            { key: "level", label: t("level") },
-            { key: "type", label: t("type") },
-          ].map(({ key, label, required }) => (
-            <Grid item xs={12} sm={6} key={key}>
-              <TextField
-                label={`${label} (${activeLang.toUpperCase()})${
-                  required ? " *" : ""
-                }`}
-                value={newCourse[key]?.[activeLang] || ""}
-                onChange={(e) =>
-                  setNewCourse({
-                    ...newCourse,
-                    [key]: {
-                      ...newCourse[key],
-                      [activeLang]: e.target.value,
-                    },
-                  })
-                }
-                fullWidth
-                size="small"
-                required={required}
-                disabled={isSaving}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: theme === "dark" ? "white" : "black",
-                    bgcolor: theme === "dark" ? "grey.700" : "white",
-                    "& fieldset": {
-                      borderColor: theme === "dark" ? "grey.600" : "grey.300",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: theme === "dark" ? "grey.500" : "grey.400",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#34d3d6",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    color: theme === "dark" ? "grey.400" : "grey.600",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#34d3d6",
-                  },
-                }}
-              />
-            </Grid>
-          ))}
-
-          {selectedCategory === "preschools" && (
-            <Grid item xs={12}>
-              <TextField
-                label={`${t("predmet")} (${activeLang.toUpperCase()})`}
-                placeholder={t("enterSubjects")}
-                value={newCourse.subject?.[activeLang] || ""}
-                onChange={(e) =>
-                  setNewCourse({
-                    ...newCourse,
-                    subject: {
-                      ...newCourse.subject,
-                      [activeLang]: e.target.value,
-                    },
-                  })
-                }
-                fullWidth
-                multiline
-                rows={3}
-                disabled={isSaving}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: theme === "dark" ? "white" : "black",
-                    bgcolor: theme === "dark" ? "grey.700" : "white",
-                    "& fieldset": {
-                      borderColor: theme === "dark" ? "grey.600" : "grey.300",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: theme === "dark" ? "grey.500" : "grey.400",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#34d3d6",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    color: theme === "dark" ? "grey.400" : "grey.600",
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#34d3d6",
-                  },
-                }}
-              />
-            </Grid>
-          )}
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              type="text"
-              label={t("price")}
-              value={newCourse.price || ""}
-              onChange={(e) =>
-                setNewCourse({ ...newCourse, price: e.target.value })
-              }
-              fullWidth
-              size="small"
-              required
-              disabled={isSaving}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  color: theme === "dark" ? "white" : "black",
-                  bgcolor: theme === "dark" ? "grey.700" : "white",
-                  "& fieldset": {
-                    borderColor: theme === "dark" ? "grey.600" : "grey.300",
-                  },
-                  "&:hover fieldset": {
-                    borderColor: theme === "dark" ? "grey.500" : "grey.400",
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#34d3d6",
-                  },
-                },
-                "& .MuiInputLabel-root": {
-                  color: theme === "dark" ? "grey.400" : "grey.600",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#34d3d6",
-                },
-                
-              }}
-              
-            />
-          </Grid>
-
-          
-        </Grid>
-      </DialogContent>
-
-      <DialogActions sx={{ p: 3, borderTop: 1, borderColor: "divider" }}>
-        <Button
-          onClick={onClose}
-          disabled={isSaving}
-          variant="outlined"
-          sx={{
-            borderColor: theme === "dark" ? "grey.600" : "grey.300",
-            color: theme === "dark" ? "grey.300" : "grey.700",
-            "&:hover": {
-              bgcolor: theme === "dark" ? "grey.700" : "grey.100",
-              borderColor: theme === "dark" ? "grey.500" : "grey.400",
-            },
-          }}
-        >
-          {t("stop")}
-        </Button>
-        <Button
-          onClick={handleSaveCourse}
-          disabled={isSaving}
-          variant="contained"
-          sx={{
-            background: "linear-gradient(to right, #34d3d6, #216f6f, #34d3d6)",
-            color: "white",
-            fontWeight: "bold",
-            "&:hover": {
-              opacity: 0.9,
-            },
-            "&:disabled": {
-              opacity: 0.6,
-            },
-          }}
-        >
-          {editingCourse ? t("down") : t("add")}
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+import ConsultationModal from "@/components/layout/ConsultationModal";
 
 const Page = () => {
+  const [open, setOpen] = useState(false);
   const t = useTranslations("courses");
   const locale = useLocale()?.slice(0, 2) || "ru";
   const { theme } = useTheme();
@@ -698,7 +233,7 @@ const Page = () => {
         type: { ru: "", en: "", tj: "" },
         subject: { ru: "", en: "", tj: "" },
         price: "",
-        external_id: Date.now().toString()
+        external_id: Date.now().toString(),
       });
       setSelectedCategory(category);
     }
@@ -980,6 +515,7 @@ const Page = () => {
           <Button
             fullWidth
             variant="contained"
+            onClick={() => setOpen(true)}
             sx={{
               background:
                 "linear-gradient(to right, #34d3d6, #216f6f, #34d3d6)",
@@ -999,18 +535,20 @@ const Page = () => {
     );
   };
 
-  // Convert backend data to frontend format for display
-  const englishCoursesFrontend = Array.isArray(englishCourses)
-    ? englishCourses.map(convertToFrontendFormat)
-    : [];
+  const englishCoursesFrontend = useMemo(() => {
+    if (!Array.isArray(englishCourses)) return [];
+    return englishCourses.map(convertToFrontendFormat);
+  }, [englishCourses]);
 
-  const russianCoursesFrontend = Array.isArray(russianCourses)
-    ? russianCourses.map(convertToFrontendFormat)
-    : [];
+  const russianCoursesFrontend = useMemo(() => {
+    if (!Array.isArray(russianCourses)) return [];
+    return russianCourses.map(convertToFrontendFormat);
+  }, [russianCourses]);
 
-  const preSchoolCoursesFrontend = Array.isArray(preSchoolCourses)
-    ? preSchoolCourses.map(convertToFrontendFormat)
-    : [];
+  const preSchoolCoursesFrontend = useMemo(() => {
+    if (!Array.isArray(preSchoolCourses)) return [];
+    return preSchoolCourses.map(convertToFrontendFormat);
+  }, [preSchoolCourses]);
 
   // Render courses by category
   const renderCourses = (courses, category, title, color) => {
@@ -1018,7 +556,7 @@ const Page = () => {
     if (!courses || courses.length === 0) return null;
 
     return (
-      <div className="w-full mb-12">
+      <div id={`${courses}`} className="w-full mb-12">
         <h2
           className={`text-3xl md:text-[40px] font-bold mb-6 text-center ${color}`}
         >
@@ -1068,6 +606,7 @@ const Page = () => {
     >
       {/* Toast Container */}
       <Toaster />
+      <ConsultationModal isOpen={open} onClose={() => setOpen(false)} />
 
       {/* Delete Confirmation Modal */}
       <DeleteConfirmationModal
@@ -1192,13 +731,6 @@ const Page = () => {
                 <h3 className="text-2xl font-bold mb-2">
                   {t("courseNotFound")}
                 </h3>
-                <p
-                  className={
-                    theme === "dark" ? "text-gray-400" : "text-gray-600"
-                  }
-                >
-                  {t("joinFirstCourse")}
-                </p>
               </div>
             )}
         </div>
@@ -1208,3 +740,467 @@ const Page = () => {
 };
 
 export default Page;
+
+// Delete Confirmation Modal Component using MUI
+const DeleteConfirmationModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  course,
+  category,
+}) => {
+  const { theme } = useTheme();
+  const t = useTranslations("courses");
+
+  const getField = (field) => {
+    if (!field) return "";
+    return typeof field === "object" ? field.ru || "" : field;
+  };
+
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth="sm"
+      fullWidth
+      PaperProps={{
+        sx: {
+          borderRadius: "16px",
+          bgcolor: theme === "dark" ? "grey.800" : "white",
+          color: theme === "dark" ? "white" : "black",
+        },
+      }}
+    >
+      <DialogTitle sx={{ p: 3, pb: 2, position: "relative" }}>
+        <IconButton
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            right: 12,
+            top: 12,
+            color: theme === "dark" ? "grey.400" : "grey.600",
+          }}
+        >
+          <X size={20} />
+        </IconButton>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+            mb: 2,
+          }}
+        >
+          <Box
+            sx={{
+              width: 64,
+              height: 64,
+              bgcolor: theme === "dark" ? "error.dark" : "error.light",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              mb: 2,
+            }}
+          >
+            <AlertTriangle sx={{ color: "error.main", fontSize: 32 }} />
+          </Box>
+          <Typography variant="h6" fontWeight="bold" sx={{ mb: 1 }}>
+            {t("pDelete")}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {t("ansDelete")}
+          </Typography>
+        </Box>
+      </DialogTitle>
+
+      <DialogContent sx={{ p: 3, pt: 0 }}>
+        <Card
+          sx={{
+            borderRadius: "12px",
+            p: 3,
+            mb: 3,
+            bgcolor: theme === "dark" ? "grey.700" : "grey.50",
+          }}
+        >
+          <Typography variant="subtitle1" fontWeight="semibold" sx={{ mb: 1 }}>
+            {getField(course?.title)}
+          </Typography>
+          <Stack spacing={0.5}>
+            <Typography variant="body2" color="text.secondary">
+              {t("level")}: {getField(course?.level)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {t("category")}:{" "}
+              {category === "english"
+                ? "Английский"
+                : category === "russian"
+                ? "Русский"
+                : "Подготовка к школе"}
+            </Typography>
+          </Stack>
+        </Card>
+      </DialogContent>
+
+      <DialogActions sx={{ p: 3, pt: 0 }}>
+        <Button
+          onClick={onClose}
+          variant="outlined"
+          sx={{
+            borderColor: theme === "dark" ? "grey.600" : "grey.300",
+            color: theme === "dark" ? "grey.300" : "grey.700",
+            "&:hover": {
+              bgcolor: theme === "dark" ? "grey.700" : "grey.100",
+              borderColor: theme === "dark" ? "grey.500" : "grey.400",
+            },
+            fontWeight: "semibold",
+          }}
+        >
+          {t("stop")}
+        </Button>
+        <Button
+          onClick={onConfirm}
+          variant="contained"
+          startIcon={<Trash2 size={16} />}
+          sx={{
+            bgcolor: "error.main",
+            color: "white",
+            fontWeight: "bold",
+            "&:hover": {
+              bgcolor: "error.dark",
+            },
+          }}
+        >
+          {t("Delete")}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+// Loading Spinner Component
+// const LoadingSpinner = () => (
+//   <Box
+//     sx={{
+//       display: "flex",
+//       justifyContent: "center",
+//       alignItems: "center",
+//       minHeight: "100vh",
+//     }}
+//   >
+//     <CircularProgress sx={{ color: "#34d3d6" }} />
+//   </Box>
+// );
+
+// Add/Edit Course Modal Component using MUI
+
+const CourseModal = ({
+  isOpen,
+  onClose,
+  editingCourse,
+  selectedCategory,
+  setSelectedCategory,
+  newCourse,
+  setNewCourse,
+  activeLang,
+  setActiveLang,
+  handleSaveCourse,
+  isSaving,
+  theme,
+  t,
+}) => {
+  return (
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      maxWidth="sm"
+      fullWidth
+      PaperProps={{
+        sx: {
+          borderRadius: "16px",
+          bgcolor: theme === "dark" ? "grey.800" : "white",
+          color: theme === "dark" ? "white" : "black",
+          maxHeight: "90vh",
+        },
+      }}
+    >
+      {isSaving && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            bgcolor: "rgba(0,0,0,0.2)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "16px",
+            zIndex: 1,
+          }}
+        >
+          <CircularProgress sx={{ color: "#34d3d6" }} />
+        </Box>
+      )}
+
+      <DialogTitle sx={{ p: 3, pb: 2, position: "relative" }}>
+        <IconButton
+          onClick={onClose}
+          disabled={isSaving}
+          sx={{
+            position: "absolute",
+            right: 12,
+            top: 12,
+            color: theme === "dark" ? "grey.400" : "grey.600",
+          }}
+        >
+          <X size={24} />
+        </IconButton>
+        <Typography
+          component="span"
+          variant="h6"
+          fontWeight="bold"
+          textAlign="center"
+        >
+          {editingCourse ? t("editCourse") : t("addCourse")}
+        </Typography>
+      </DialogTitle>
+
+      <DialogContent dividers sx={{ p: 3 }}>
+        {!editingCourse && (
+          <FormControl fullWidth sx={{ mb: 3 }}>
+            <InputLabel>{t("category")}</InputLabel>
+            <Select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              label={t("category")}
+              disabled={isSaving}
+              sx={{
+                bgcolor: theme === "dark" ? "grey.700" : "white",
+              }}
+            >
+              <MenuItem value="english">{t("english")}</MenuItem>
+              <MenuItem value="russian">{t("russian")}</MenuItem>
+              <MenuItem value="preschools">{t("preSchool")}</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+
+        <Stack
+          direction="row"
+          spacing={1}
+          justifyContent="center"
+          sx={{ mb: 3 }}
+        >
+          {["ru", "en", "tj"].map((lang) => (
+            <Button
+              key={lang}
+              onClick={() => setActiveLang(lang)}
+              disabled={isSaving}
+              variant={activeLang === lang ? "contained" : "outlined"}
+              startIcon={<LanguageIcon />}
+              sx={{
+                minWidth: "100px",
+                bgcolor: activeLang === lang ? "#34d3d6" : "transparent",
+                color:
+                  activeLang === lang
+                    ? "white"
+                    : theme === "dark"
+                    ? "white"
+                    : "grey.800",
+                borderColor: theme === "dark" ? "grey.600" : "grey.300",
+                "&:hover": {
+                  bgcolor:
+                    activeLang === lang
+                      ? "#2ab3b6"
+                      : theme === "dark"
+                      ? "grey.700"
+                      : "grey.100",
+                },
+              }}
+            >
+              {lang.toUpperCase()}
+            </Button>
+          ))}
+        </Stack>
+
+        <Grid
+          sx={{
+            "& > *": { margin: 2 }, // Фосилаи байни ҳама фарзандҳо
+          }}
+        >
+          {[
+            { key: "title", label: t("title"), required: true },
+            { key: "duration", label: t("duration") },
+            { key: "academicSupport", label: t("academicSupport") },
+            { key: "clubs", label: t("clubs") },
+            { key: "level", label: t("level") },
+            { key: "type", label: t("type") },
+          ].map(({ key, label, required }) => (
+            <Grid item xs={12} sm={6} key={key}>
+              <TextField
+                label={`${label} (${activeLang.toUpperCase()})${
+                  required ? " *" : ""
+                }`}
+                value={newCourse[key]?.[activeLang] || ""}
+                onChange={(e) =>
+                  setNewCourse({
+                    ...newCourse,
+                    [key]: {
+                      ...newCourse[key],
+                      [activeLang]: e.target.value,
+                    },
+                  })
+                }
+                fullWidth
+                size="small"
+                required={required}
+                disabled={isSaving}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    color: theme === "dark" ? "white" : "black",
+                    bgcolor: theme === "dark" ? "grey.700" : "white",
+                    "& fieldset": {
+                      borderColor: theme === "dark" ? "grey.600" : "grey.300",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: theme === "dark" ? "grey.500" : "grey.400",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#34d3d6",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme === "dark" ? "grey.400" : "grey.600",
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#34d3d6",
+                  },
+                }}
+              />
+            </Grid>
+          ))}
+
+          {selectedCategory === "preschools" && (
+            <Grid item xs={12}>
+              <TextField
+                label={`${t("predmet")} (${activeLang.toUpperCase()})`}
+                placeholder={t("enterSubjects")}
+                value={newCourse.subject?.[activeLang] || ""}
+                onChange={(e) =>
+                  setNewCourse({
+                    ...newCourse,
+                    subject: {
+                      ...newCourse.subject,
+                      [activeLang]: e.target.value,
+                    },
+                  })
+                }
+                fullWidth
+                multiline
+                rows={3}
+                disabled={isSaving}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    color: theme === "dark" ? "white" : "black",
+                    bgcolor: theme === "dark" ? "grey.700" : "white",
+                    "& fieldset": {
+                      borderColor: theme === "dark" ? "grey.600" : "grey.300",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: theme === "dark" ? "grey.500" : "grey.400",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#34d3d6",
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme === "dark" ? "grey.400" : "grey.600",
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#34d3d6",
+                  },
+                }}
+              />
+            </Grid>
+          )}
+
+          <Grid item xs={12} sm={6}>
+            <TextField
+              type="text"
+              label={t("price")}
+              value={newCourse.price || ""}
+              onChange={(e) =>
+                setNewCourse({ ...newCourse, price: e.target.value })
+              }
+              fullWidth
+              size="small"
+              required
+              disabled={isSaving}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  color: theme === "dark" ? "white" : "black",
+                  bgcolor: theme === "dark" ? "grey.700" : "white",
+                  "& fieldset": {
+                    borderColor: theme === "dark" ? "grey.600" : "grey.300",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: theme === "dark" ? "grey.500" : "grey.400",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#34d3d6",
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: theme === "dark" ? "grey.400" : "grey.600",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#34d3d6",
+                },
+              }}
+            />
+          </Grid>
+        </Grid>
+      </DialogContent>
+
+      <DialogActions sx={{ p: 3, borderTop: 1, borderColor: "divider" }}>
+        <Button
+          onClick={onClose}
+          disabled={isSaving}
+          variant="outlined"
+          sx={{
+            borderColor: theme === "dark" ? "grey.600" : "grey.300",
+            color: theme === "dark" ? "grey.300" : "grey.700",
+            "&:hover": {
+              bgcolor: theme === "dark" ? "grey.700" : "grey.100",
+              borderColor: theme === "dark" ? "grey.500" : "grey.400",
+            },
+          }}
+        >
+          {t("stop")}
+        </Button>
+        <Button
+          onClick={handleSaveCourse}
+          disabled={isSaving}
+          variant="contained"
+          sx={{
+            background: "linear-gradient(to right, #34d3d6, #216f6f, #34d3d6)",
+            color: "white",
+            fontWeight: "bold",
+            "&:hover": {
+              opacity: 0.9,
+            },
+            "&:disabled": {
+              opacity: 0.6,
+            },
+          }}
+        >
+          {editingCourse ? t("down") : t("add")}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};

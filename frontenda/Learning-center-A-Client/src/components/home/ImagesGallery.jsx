@@ -26,7 +26,7 @@ import Loading from "../loading/loading";
 
 const ImagesGallery = ({ isAdmin }) => {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState("")
+  const [mounted, setMounted] = useState("");
   const { data: gallery = [], isLoading, isError } = useGetGalleryQuery();
   const [addGalleryImage] = useAddGalleryImageMutation();
   const [deleteGalleryImage] = useDeleteGalleryImageMutation();
@@ -115,13 +115,13 @@ const ImagesGallery = ({ isAdmin }) => {
     }
   };
 
-   useEffect(() => {
-      setMounted(true)
-    }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  if(!mounted) return null
+  if (!mounted) return null;
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading />;
   if (isError)
     return <p className="text-red-500 text-center">{t("errorLoad")}</p>;
 

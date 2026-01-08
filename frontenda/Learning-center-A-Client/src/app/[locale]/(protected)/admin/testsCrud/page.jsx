@@ -11,7 +11,7 @@ import {
   useUpdateQuestionMutation,
 } from "@/store/slices/testApi";
 import toast, { Toaster } from "react-hot-toast";
-import { Edit, Save, Search, BookOpen } from "lucide-react";
+import { Edit, Save, BookOpen } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Loading from "@/components/loading/loading";
 import { useTheme } from "next-themes";
@@ -27,7 +27,7 @@ export default function TestCrud() {
     correctAnswer: 0,
     explanation: "",
   });
-  const t = useTranslations("testCrud")
+  const t = useTranslations("testCrud");
 
   const dataA1 = useGetQuestionA1Query();
   const dataA2 = useGetQuestionA2Query();
@@ -35,7 +35,6 @@ export default function TestCrud() {
   const dataB2 = useGetQuestionB2Query();
   const dataC1 = useGetQuestionC1Query();
   const dataC2 = useGetQuestionC2Query();
-
 
   const queries = {
     A1: dataA1,
@@ -66,9 +65,9 @@ export default function TestCrud() {
         data: { level: q.level, ...formData },
       });
       setEditingId(null);
-      toast.success(t('updateSox'));
+      toast.success(t("updateSox"));
     } catch {
-      toast.error(t('errorSave'));
+      toast.error(t("errorSave"));
     }
   };
 
@@ -87,30 +86,36 @@ export default function TestCrud() {
   return (
     <div className="space-y-6 p-4">
       <Toaster />
-      
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className={`text-2xl font-bold ${
-            theme === "dark" ? "text-white" : "text-gray-900"
-          } flex items-center gap-2`}>
+          <h1
+            className={`text-2xl font-bold ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            } flex items-center gap-2`}
+          >
             <BookOpen className="w-6 h-6" />
-            {t('testManagement')} {activeLevel}
+            {t("testManagement")} {activeLevel}
           </h1>
-          <p className={`mt-1 ${
-            theme === "dark" ? "text-gray-400" : "text-gray-600"
-          }`}>
-            {t('editQuestions')}
+          <p
+            className={`mt-1 ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            {t("editQuestions")}
           </p>
         </div>
       </div>
 
       {/* Level Selection Card */}
-      <div className={`rounded-xl p-4 border ${
-        theme === "dark"
-          ? "bg-gray-800 border-gray-700"
-          : "bg-white border-gray-200"
-      }`}>
+      <div
+        className={`rounded-xl p-4 border ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Level Buttons */}
           <div className="flex flex-wrap gap-2">
@@ -138,53 +143,67 @@ export default function TestCrud() {
           <Loading />
         </div>
       ) : (
-        <div className={`rounded-xl border overflow-hidden ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}>
+        <div
+          className={`rounded-xl border overflow-hidden ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-50"}>
+              <thead
+                className={theme === "dark" ? "bg-gray-700" : "bg-gray-50"}
+              >
                 <tr>
-                  <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-500"
-                  }`}>
+                  <th
+                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-500"
+                    }`}
+                  >
                     Вопрос
                   </th>
-                  <th className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-500"
-                  }`}>
+                  <th
+                    className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-500"
+                    }`}
+                  >
                     Вопрос
                   </th>
-                  <th className={`px-6 py-3 text-center text-xs font-medium uppercase tracking-wider ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-500"
-                  }`}>
+                  <th
+                    className={`px-6 py-3 text-center text-xs font-medium uppercase tracking-wider ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-500"
+                    }`}
+                  >
                     Правильно
                   </th>
-                  <th className={`px-6 py-3 text-center text-xs font-medium uppercase tracking-wider ${
-                    theme === "dark" ? "text-gray-300" : "text-gray-500"
-                  }`}>
+                  <th
+                    className={`px-6 py-3 text-center text-xs font-medium uppercase tracking-wider ${
+                      theme === "dark" ? "text-gray-300" : "text-gray-500"
+                    }`}
+                  >
                     Действия
                   </th>
                 </tr>
               </thead>
-              <tbody className={`divide-y ${
-                theme === "dark" ? "divide-gray-600" : "divide-gray-200"
-              }`}>
+              <tbody
+                className={`divide-y ${
+                  theme === "dark" ? "divide-gray-600" : "divide-gray-200"
+                }`}
+              >
                 {data?.map((q) => {
                   const isEdit = editingId === q.id;
                   return (
                     <tr
                       key={q.id}
                       className={`transition-colors ${
-                        isEdit 
-                          ? theme === "dark" 
-                            ? "bg-yellow-900/20" 
+                        isEdit
+                          ? theme === "dark"
+                            ? "bg-yellow-900/20"
                             : "bg-yellow-50"
                           : theme === "dark"
-                            ? "hover:bg-gray-700"
-                            : "hover:bg-gray-50"
+                          ? "hover:bg-gray-700"
+                          : "hover:bg-gray-50"
                       }`}
                     >
                       {/* Первая колонка - Вопрос */}
@@ -205,9 +224,13 @@ export default function TestCrud() {
                             }`}
                           />
                         ) : (
-                          <p className={`text-sm ${
-                            theme === "dark" ? "text-gray-300" : "text-gray-900"
-                          }`}>
+                          <p
+                            className={`text-sm ${
+                              theme === "dark"
+                                ? "text-gray-300"
+                                : "text-gray-900"
+                            }`}
+                          >
                             {q.question}
                           </p>
                         )}
@@ -218,7 +241,10 @@ export default function TestCrud() {
                         {isEdit ? (
                           <div className="space-y-2">
                             {formData.options.map((opt, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
+                              <div
+                                key={idx}
+                                className="flex items-center gap-2"
+                              >
                                 <input
                                   value={opt}
                                   onChange={(e) =>
@@ -239,9 +265,13 @@ export default function TestCrud() {
                             ))}
                           </div>
                         ) : (
-                          <p className={`text-sm ${
-                            theme === "dark" ? "text-gray-300" : "text-gray-700"
-                          }`}>
+                          <p
+                            className={`text-sm ${
+                              theme === "dark"
+                                ? "text-gray-300"
+                                : "text-gray-700"
+                            }`}
+                          >
                             {q.options.map((opt, idx) => (
                               <span key={idx}>
                                 {opt}
@@ -274,11 +304,13 @@ export default function TestCrud() {
                               }`}
                             />
                           ) : (
-                            <span className={`inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-medium ${
-                              theme === "dark"
-                                ? "bg-green-900/30 text-green-400"
-                                : "bg-green-100 text-green-800"
-                            }`}>
+                            <span
+                              className={`inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-medium ${
+                                theme === "dark"
+                                  ? "bg-green-900/30 text-green-400"
+                                  : "bg-green-100 text-green-800"
+                              }`}
+                            >
                               {q.correctAnswer + 1}
                             </span>
                           )}

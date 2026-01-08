@@ -95,7 +95,7 @@
     "sureName": "Surname",
     "email": "Your E-mail",
     "date": "Your date of birth",
-    "interview": "Proceed to Interview",
+    "interview": "Send Resume",
     "editVacancy": "Edit Vacancy",
     "titleText": "Title",
     "description": "Description",
@@ -128,7 +128,8 @@
     "failedDelete": "Failed to delete question. Please try again.",
     "validImage": "Please upload a valid image file (JPEG, PNG, JPG, GIF, WEBP)",
     "size": "Image size should be less than 5MB",
-    "maxFive": "Supported formats: JPEG, PNG, JPG, GIF, WEBP (Max 5MB)"
+    "maxFive": "Supported formats: JPEG, PNG, JPG, GIF, WEBP (Max 5MB)",
+    "sending": "Sending..."
   },
 
   "header": {
@@ -157,13 +158,12 @@
     "courses": {
       "title": "Courses",
       "english": "English Language",
-      "programming": "Programming",
-      "design": "Design",
-      "marketing": "Marketing"
+      "programming": "Russian Language",
+      "design": "Other Courses"
     },
     "contacts": {
       "title": "Contacts",
-      "address": "Dushanbe, Example Street, 123"
+      "address": "Dushanbe, korvon market, M. Kosimova 25, (64mkr)"
     },
     "rights": "All rights reserved."
   },
@@ -331,7 +331,18 @@
     "descriptionText": "Description",
     "saveSuccess": "Saved successfully!",
     "errorDownData": "Error loading data",
-    "imageLoad": "Background image:"
+    "imageLoad": "Background image:",
+    "sending": "Sending...",
+    "enterNamePhone": "Enter your name and phone number",
+    "smsSent": "SMS sent",
+    "smsError": "Failed to send SMS",
+    "enterSms": "Enter the code we sent you",
+    "enterCode": "Enter code",
+    "confirmCode": "Confirm Code",
+    "resendCode": "Resend Code",
+    "notificationSent": "Notification sent successfully",
+    "notificationError": "Failed to send notification",
+    "successMessage": "We will contact you soon!"
   },
 
   "stats": {
@@ -673,6 +684,7 @@
     "close": "Close",
     "resume": "Resume",
     "testRes": "Test Results",
+    "testMan": "Test Management",
     "logout": "Logout",
     "logoutTitle": "Confirm Logout",
     "logoutMessage": "Are you sure you want to log out?",
@@ -726,6 +738,7 @@
   },
   "register": {
     "title": "Register",
+    "namePlaceholder": "Your Name",
     "phonePlaceholder": "Phone number 987654321",
     "codePlaceholder": "SMS code",
     "passwordPlaceholder": "Password",

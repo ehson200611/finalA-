@@ -7,10 +7,7 @@ import {
   Mail,
   MapPin,
   Clock,
-  Trash2,
-  Edit2,
   Plus,
-  X,
   PlusCircle,
   MessageSquare,
 } from "lucide-react";
@@ -35,14 +32,10 @@ import {
   Button,
   TextField,
   Box,
-  IconButton,
   Alert,
   Typography,
-  Chip,
-  Divider,
 } from "@mui/material";
 import { useGetMeProfileQuery } from "@/store/slices/profile";
-import { useUser } from "@/hooks/useUser";
 import Errors from "@/components/error/errors";
 import Loading from "@/components/loading/loading";
 import { useCreateFeedbackMutation } from "@/store/slices/feedbackApi";
@@ -58,7 +51,8 @@ export default function Contact() {
   const isAdmin = meProfile?.role === "superadmin";
 
   const { data: locations = [], isLoading, error } = useGetContactsQuery();
-  const [createFeedback, { isLoading: isSubmittingFeedback }] = useCreateFeedbackMutation();
+  const [createFeedback, { isLoading: isSubmittingFeedback }] =
+    useCreateFeedbackMutation();
   const [addContact] = useAddContactMutation();
   const [updateContact] = useUpdateContactMutation();
   const [deleteContact] = useDeleteContactMutation();
@@ -72,49 +66,48 @@ export default function Contact() {
   });
   const [feedbackError, setFeedbackError] = useState("");
   const handleFeedbackSubmit = async (e) => {
-  e.preventDefault();
-  
-  if (!feedbackForm.name.trim()) {
-    setFeedbackError(t("nameRequired") || "Name is required");
-    return;
-  }
-  if (!feedbackForm.phone_number.trim()) {
-    setFeedbackError(t("phoneRequired") || "Phone number is required");
-    return;
-  }
-  if (!feedbackForm.text.trim()) {
-    setFeedbackError(t("feedbackRequired") || "Feedback text is required");
-    return;
-  }
-  
-  setFeedbackError("");
-  
-  try {
-    const formData = new FormData();
-    formData.append('name', feedbackForm.name);
-    formData.append('phone_number', feedbackForm.phone_number);
-    formData.append('text', feedbackForm.text);
-    
-    await createFeedback(formData).unwrap();
-    
-    setFeedbackForm({
-      name: "",
-      phone_number: "",
-      text: "",
-    });
-    
-    toast.success(t("feedbackSuccess") || "Feedback submitted successfully!");
-    
-    setTimeout(() => toast(""), 3000);
-    
-  } catch (error) {
-    console.error("Failed to submit feedback:", error);
-    toast.error(
-      t("feedbackError") || 
-      "Failed to submit feedback. Please try again later."
-    );
-  }
-};
+    e.preventDefault();
+
+    if (!feedbackForm.name.trim()) {
+      setFeedbackError(t("nameRequired") || "Name is required");
+      return;
+    }
+    if (!feedbackForm.phone_number.trim()) {
+      setFeedbackError(t("phoneRequired") || "Phone number is required");
+      return;
+    }
+    if (!feedbackForm.text.trim()) {
+      setFeedbackError(t("feedbackRequired") || "Feedback text is required");
+      return;
+    }
+
+    setFeedbackError("");
+
+    try {
+      const formData = new FormData();
+      formData.append("name", feedbackForm.name);
+      formData.append("phone_number", feedbackForm.phone_number);
+      formData.append("text", feedbackForm.text);
+
+      await createFeedback(formData).unwrap();
+
+      setFeedbackForm({
+        name: "",
+        phone_number: "",
+        text: "",
+      });
+
+      toast.success(t("feedbackSuccess") || "Feedback submitted successfully!");
+
+      setTimeout(() => toast(""), 3000);
+    } catch (error) {
+      console.error("Failed to submit feedback:", error);
+      toast.error(
+        t("feedbackError") ||
+          "Failed to submit feedback. Please try again later."
+      );
+    }
+  };
   const [formData, setFormData] = useState({
     name: "",
     title: "",

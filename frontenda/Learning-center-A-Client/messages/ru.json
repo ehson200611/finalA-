@@ -95,7 +95,7 @@
     "sureName": "Фамилия",
     "email": "Ваше E-mail",
     "date": "Вашa дата рождения",
-    "interview": "Пeрейти к интервью",
+    "interview": "Отправить резюме",
     "editVacancy": "Редактировать вакансию",
     "titleText": "Название",
     "description": "Описание",
@@ -128,7 +128,8 @@
     "failedDelete": "Не удалось удалить вопрос. Пожалуйста, попробуйте снова.",
     "validImage": "Пожалуйста, загрузите корректный файл изображения (JPEG, PNG, JPG, GIF, WEBP)",
     "size": "Размер изображения должен быть меньше 5 МБ",
-    "maxFive": "Поддерживаемые форматы: JPEG, PNG, JPG, GIF, WEBP (Максимум 5 МБ)"
+    "maxFive": "Поддерживаемые форматы: JPEG, PNG, JPG, GIF, WEBP (Максимум 5 МБ)",
+    "sending": "Отправка..."
   },
 
   "header": {
@@ -157,13 +158,12 @@
     "courses": {
       "title": "Курсы",
       "english": "Английский язык",
-      "programming": "Программирование",
-      "design": "Дизайн",
-      "marketing": "Маркетинг"
+      "programming": "Русский язык",
+      "design": "Другие курсы"
     },
     "contacts": {
       "title": "Контакты",
-      "address": "г. Душанбе, ул. Примерная, 123"
+      "address": "г. Душанбе, рынок корвон, М. Косимова 25, (64мкр)"
     },
     "rights": "Все права защищены."
   },
@@ -318,7 +318,18 @@
     "descriptionText": "Описание",
     "saveSuccess": "Успешно сохранено!",
     "errorDownData": "Ошибка загрузки данных",
-    "imageLoad": "Фоновое изображение:"
+    "imageLoad": "Фоновое изображение:",
+    "sending": "Отправка...",
+    "enterNamePhone": "Введите имя и номер телефона",
+    "smsSent": "SMS отправлен",
+    "smsError": "Ошибка при отправке SMS",
+    "enterSms": "Введите код, который мы отправили вам",
+    "enterCode": "Введите код",
+    "confirmCode": "Подтвердить код",
+    "resendCode": "Отправить код повторно",
+    "notificationSent": "Уведомление успешно отправлено",
+    "notificationError": "Ошибка отправки уведомления",
+    "successMessage": "Скоро мы свяжемся с вами!"
   },
 
   "stats": {
@@ -667,6 +678,7 @@
     "close": "Закрыть",
     "resume": "Резюме",
     "testRes": "Результаты теста",
+    "testMan": "Управление тестами",
     "logout": "Выйти",
     "logoutTitle": "Подтверждение выхода",
     "logoutMessage": "Вы уверены, что хотите выйти?",
@@ -737,6 +749,7 @@
   },
   "register": {
     "title": "Регистрация",
+    "namePlaceholder": "Ваше имя",
     "phonePlaceholder": "Номер телефона 987654321",
     "codePlaceholder": "Код из SMS",
     "passwordPlaceholder": "Пароль",

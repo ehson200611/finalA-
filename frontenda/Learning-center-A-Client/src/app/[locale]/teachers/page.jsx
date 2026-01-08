@@ -15,7 +15,6 @@ import TeacherCard from "../../../components/teachersComponent/TeacherCard";
 import SectionOne from "@/components/SectionOne";
 import { PlusCircle } from "lucide-react";
 import { useGetMeProfileQuery } from "@/store/slices/profile";
-import { useUser } from "@/hooks/useUser";
 import Errors from "@/components/error/errors";
 import Loading from "@/components/loading/loading";
 import { toast, Toaster } from "react-hot-toast";

@@ -208,14 +208,14 @@ const NotificationPage = () => {
     <div className="space-y-6">
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
         <div>
-          <h1
+          <p
             className={`text-2xl font-bold ${
               theme === "dark" ? "text-white" : "text-gray-900"
             } flex items-center gap-2`}
           >
             <Bell className="w-6 h-6" />
             {t("notifications")}
-          </h1>
+          </p>
           <p
             className={`${
               theme === "dark" ? "text-gray-400" : "text-gray-600"

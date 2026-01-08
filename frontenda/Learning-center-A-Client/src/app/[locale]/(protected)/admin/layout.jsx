@@ -13,6 +13,7 @@ import {
   BookOpenCheck,
   ShieldCheck,
   LogOutIcon,
+  LogOut,
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
@@ -47,56 +48,48 @@ const LayoutAdmin = ({ children }) => {
       href: `/${locale}/admin`,
       label: t("notification"),
       icon: <Bell />,
-      color: "from-yellow-500 to-amber-500",
       superAdmin: true,
     },
     {
       href: `/${locale}/admin/users`,
       label: t("users"),
       icon: <Users />,
-      color: "from-blue-500 to-cyan-500",
       superAdmin: isSuperAdmin,
     },
     {
       href: `/${locale}/admin/tests`,
       label: t("testRes"),
       icon: <ChartNoAxesCombined />,
-      color: "from-red-500 to-pink-500",
       superAdmin: true,
     },
     {
       href: `/${locale}/admin/userAdmin`,
       label: t("admins"),
       icon: <Crown />,
-      color: "from-green-500 to-emerald-500",
       superAdmin: isSuperAdmin,
     },
     {
       href: `/${locale}/admin/testsCrud`,
-      label: t("testRes"),
+      label: t("testMan"),
       icon: <BookOpenCheck />,
-      color: "from-green-500 to-emerald-500",
       superAdmin: isSuperAdmin,
     },
     {
       href: `/${locale}/admin/books`,
       label: t("books"),
       icon: <BookOpenText />,
-      color: "from-green-500 to-emerald-500",
       superAdmin: isSuperAdmin,
     },
     {
       href: `/${locale}/admin/feedback`,
       label: t("review"),
       icon: <UserStar />,
-      color: "from-green-500 to-emerald-500",
       superAdmin: isSuperAdmin,
     },
     {
       href: `/${locale}/admin/work`,
       label: t("resume"),
       icon: <FileUser />,
-      color: "from-green-500 to-emerald-500",
       superAdmin: isSuperAdmin,
     },
   ];
@@ -131,7 +124,7 @@ const LayoutAdmin = ({ children }) => {
         theme === "dark"
           ? "bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white"
           : "bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-800"
-      } font-sans lg:h-[80vh] flex overflow-hidden`}
+      } font-sans lg:h-[90.5vh] flex overflow-hidden`}
     >
       {/* Затемнение фона для мобильных и планшетных устройств */}
       {isSidebarOpen && (
@@ -143,51 +136,32 @@ const LayoutAdmin = ({ children }) => {
 
       {/* САЙДБАР - Адаптивный под разные устройства */}
       <div
-        className={`fixed top-0 lg:h-[85vh] h-screen flex flex-col lg:z-10 z-30 transition-transform duration-300 ease-in-out
-    ${
-      theme === "dark"
-        ? "bg-gray-800/95 backdrop-blur-lg border-r border-gray-700"
-        : "bg-white/95 backdrop-blur-lg border-r border-gray-200 shadow-lg"
-    }
-    ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-    lg:static lg:translate-x-0
-    w-64 md:w-72 lg:w-80
-  `}
+        className={`fixed top-0 lg:h-[92vh] h-screen lg:z-10 z-30 transition-transform duration-300 ease-in-out
+            ${
+              theme === "dark"
+                ? "bg-gray-800/95 backdrop-blur-lg border-r border-gray-700"
+                : "bg-white/95 backdrop-blur-lg border-r border-gray-200 shadow-lg"
+            }
+         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+         lg:static lg:translate-x-0
+         w-64 md:w-72 lg:w-80
+       `}
       >
         {/* Заголовок сайдбара */}
-        <div className="shrink-0 p-4 sm:p-4 md:p-5 lg:p-6 pb-0">
-          <h1 className="text-lg sm:text-lg md:text-xl lg:text-xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="flex justify-between items-center p-4 md:p-5 lg:p-6 pb-0">
+          <p className="text-lg sm:text-lg md:text-xl lg:text-xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             {t("adminPanel")}
-          </h1>
-        </div>
-
-        <div className="flex justify-start pb-4 px-6">
+          </p>
           <Button
-            startIcon={<LogOutIcon />}
             onClick={() => logOut()}
-            sx={{
-              backgroundColor: "#f44336",
-              background: "linear-gradient(45deg, #f44336 30%, #d32f2f 10%)",
-              color: "white",
-              padding: "5px",
-              fontSize: "14px",
-              width: "50%",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                backgroundColor: "#d32f2f",
-                transform: "translateY(-2px)",
-                boxShadow: "0 6px 12px rgba(244, 67, 54, 0.3)",
-              },
-              "&:active": {
-                transform: "translateY(0)",
-              },
-            }}
+            sx={{ backgroundColor: "red", color: "white" }}
           >
-            Lagout
+            <LogOut size={20} />
           </Button>
         </div>
+
         {/* Навигация - прокручиваемая область */}
-        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide px-3 sm:px-3 md:px-4 lg:px-2 py-1 sm:py-1 md:py-2 lg:py-0">
+        <div className=" max-h-[75vh] overflow-y-auto scrollbar-hide px-3 sm:px-3 md:px-4 lg:px-2 py-1 sm:py-1 md:py-2 lg:pt-1 lg:pb-10">
           <nav className="space-y-1 sm:space-y-1 md:space-y-2 lg:space-y-2">
             {navItems.map((item) => (
               <Link
@@ -214,7 +188,7 @@ const LayoutAdmin = ({ children }) => {
               >
                 {/* Градиентный фон */}
                 <div
-                  className={`absolute inset-0 bg-linear-to-r ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                  className={`absolute inset-0 bg-linear-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
                 />
 
                 {/* Иконка */}

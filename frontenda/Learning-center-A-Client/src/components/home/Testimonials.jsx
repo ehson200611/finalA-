@@ -215,7 +215,7 @@ const Testimonials = ({ isAdmin }) => {
       </div>
 
       <div className="flex gap-26 overflow-x-auto scrollbar-hide py-10">
-        {testimonials.map((item) => (
+        {testimonials?.map((item) => (
           <div key={item.id} className="shrink-0 w-[320px]">
             <TestimonialCard
               item={item}
@@ -259,7 +259,7 @@ const Testimonials = ({ isAdmin }) => {
                 readOnly
               />
             </Stack>
-            <p className="text-2xl font-bold md:text-3xl">5.0</p>
+            <p className="text-2xl font-bold md:text-3xl">4.9</p>
           </div>
         </div>
         <div
@@ -286,7 +286,7 @@ const Testimonials = ({ isAdmin }) => {
                 readOnly
               />
             </Stack>
-            <p className="text-2xl font-bold md:text-3xl">5.0</p>
+            <p className="text-2xl font-bold md:text-3xl">4.95</p>
           </div>
         </div>
       </div>

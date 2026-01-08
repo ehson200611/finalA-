@@ -1,31 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Search, Trash2, User, Shield, Phone, Calendar } from "lucide-react";
-import {
-  useGetAdminsQuery,
-} from "@/store/slices/superAdminApi";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Search,  User, Shield, Phone, Calendar } from "lucide-react";
+import { useGetAdminsQuery } from "@/store/slices/superAdminApi";
+
 import { useTranslations } from "next-intl";
 import { useGetMeProfileQuery } from "@/store/slices/profile";
 import Unauthorized from "@/app/[locale]/unauthorized/page";
 import Loading from "@/components/loading/loading";
-import toast, { Toaster } from "react-hot-toast";
 
 const UserAdmin = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [adminToDelete, setAdminToDelete] = useState(null);
   const t = useTranslations("userAdmin");
 
   const { data, isLoading, error, refetch } = useGetAdminsQuery();
@@ -36,7 +23,6 @@ const UserAdmin = () => {
   if (!isAdmin) {
     <Unauthorized />;
   }
-
 
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
@@ -91,41 +77,29 @@ const UserAdmin = () => {
   }
 
   // Фильтрация админов
-  const filteredAdmins = data?.admins?.filter(
-    (admin) =>
-      admin?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      admin?.phoneNumber?.toLowerCase().includes(searchTerm.toLowerCase())
-  ) || [];
-
-  // Delete Admin Functions
-  const handleOpenDeleteDialog = (admin) => {
-    setAdminToDelete(admin);
-    setDeleteDialogOpen(true);
-  };
-
-  const handleCloseDeleteDialog = () => {
-    setDeleteDialogOpen(false);
-    setAdminToDelete(null);
-  };
-
+  const filteredAdmins =
+    data?.admins?.filter(
+      (admin) =>
+        admin?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        admin?.phoneNumber?.toLowerCase().includes(searchTerm.toLowerCase())
+    ) || [];
 
   const isDark = theme === "dark";
 
   return (
     <div>
-      <Toaster />
       <div className="container mx-auto px-4 py-8">
         <div className="space-y-6">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div>
-              <h1
+              <p
                 className={`text-2xl font-bold ${
                   isDark ? "text-white" : "text-gray-900"
                 } flex items-center gap-2`}
               >
                 <Shield className="w-6 h-6" />
                 {t("adminManagement")}
-              </h1>
+              </p>
               <p
                 className={`mt-1 ${isDark ? "text-gray-400" : "text-gray-600"}`}
               >
@@ -135,8 +109,6 @@ const UserAdmin = () => {
 
             {/* Search and Count */}
             <div className="flex items-center gap-4">
-
-
               {/* Search */}
               <div
                 className={`rounded-xl p-4 border transition-colors duration-200 ${
@@ -206,7 +178,6 @@ const UserAdmin = () => {
                     >
                       {t("joinDateText")}
                     </th>
-                    
                   </tr>
                 </thead>
                 <tbody
@@ -284,7 +255,6 @@ const UserAdmin = () => {
                           </span>
                         </td>
 
-
                         {/* Дата регистрации */}
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-200">
@@ -312,8 +282,6 @@ const UserAdmin = () => {
                             )}
                           </p>
                         </td>
-
-                      
                       </tr>
                     ))
                   ) : (
@@ -343,103 +311,8 @@ const UserAdmin = () => {
               </table>
             </div>
           </div>
-
-          {/* Пагинация/информация */}
-          {filteredAdmins.length > 0 && (
-            <div
-              className={`flex justify-between items-center px-4 py-3 rounded-lg border ${
-                isDark
-                  ? "bg-gray-800 border-gray-700 text-gray-300"
-                  : "bg-white border-gray-200 text-gray-700"
-              }`}
-            >
-              <p className="text-sm">
-                {t("showing")} <span className="font-bold">{filteredAdmins.length}</span>{" "}
-                {t("of")} <span className="font-bold">{data?.count || 0}</span>{" "}
-                {t("admins")}
-              </p>
-              {searchTerm && (
-                <p className="text-sm text-blue-500">
-                  {t("searchResultsFor")}: "{searchTerm}"
-                </p>
-              )}
-            </div>
-          )}
         </div>
       </div>
-
-      {/* Delete Confirmation Dialog */}
-      <Dialog
-        open={deleteDialogOpen}
-        onClose={handleCloseDeleteDialog}
-        maxWidth="sm"
-        fullWidth
-        sx={{
-          "& .MuiDialog-paper": {
-            backgroundColor: isDark ? "#0a1a23" : "white",
-            color: isDark ? "white" : "#101828",
-            backgroundImage: "none",
-          },
-        }}
-      >
-        <DialogTitle
-          sx={{
-            color: isDark ? "white" : "#101828",
-            backgroundColor: isDark ? "#0a1a23" : "white",
-            borderBottom: isDark ? "1px solid #1e3a4a" : "1px solid #e5e7eb",
-            fontSize: "1.25rem",
-            fontWeight: "600",
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-          }}
-        >
-          <Trash2 className="w-5 h-5 text-red-500" />
-          {t("deleteAdmin")}
-        </DialogTitle>
-
-        <DialogContent
-          sx={{
-            backgroundColor: isDark ? "#0a1a23" : "white",
-            pt: 3,
-          }}
-        >
-          <Box sx={{ pt: 1 }}>
-            <Typography
-              sx={{
-                color: isDark ? "white" : "#101828",
-                fontSize: "1rem",
-                lineHeight: 1.5,
-              }}
-            >
-              {t("confirmDeleteAdmin")}{" "}
-              <span
-                style={{
-                  fontWeight: 600,
-                  color: isDark ? "#60a5fa" : "#3b82f6",
-                }}
-              >
-                {adminToDelete?.name}
-              </span>
-              {t("cannotUndo")}
-            </Typography>
-
-           
-          </Box>
-        </DialogContent>
-
-        <DialogActions
-          sx={{
-            p: 3,
-            gap: 1,
-            backgroundColor: isDark ? "#0a1a23" : "white",
-            borderTop: isDark ? "1px solid #1e3a4a" : "1px solid #e5e7eb",
-          }}
-        >
-    
-        
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

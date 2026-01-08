@@ -5,7 +5,6 @@ import {
   BookOpen,
   Calendar,
   Search,
-  Eye,
   CheckCircle,
   XCircle,
   ChevronDown,
@@ -14,72 +13,27 @@ import {
 import { useGetTestAdminQuery } from "@/store/slices/testAdminApi";
 import { useTranslations } from "next-intl";
 import Loading from "@/components/loading/loading";
+import Errors from "@/components/error/errors";
 
 const Tests = () => {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState("")
+  const [mounted, setMounted] = useState(false)
   const [searchTerm, setSearchTerm] = useState("");
   const [levelFilter, setLevelFilter] = useState("all");
   const t = useTranslations("test");
   const [openTest, setOpenTest] = useState(null); // Changed to track open test by ID
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const {
     data: tests = [],
     isLoading,
     error,
-    refetch,
   } = useGetTestAdminQuery();
 
-  // Show loading state
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <Loading />
-      </div>
-    );
-  }
 
-  if (error) {
-    // 1. Проверяем интернет
-    const isOnline = typeof navigator !== "undefined" ? navigator.onLine : true;
-
-    // 2. Определяем тип ошибки
-    let title = "";
-    if (!isOnline) {
-      title = t("noINternet");
-    } else {
-      title = t("server");
-    }
-
-    // 3. Получаем сообщение сервера если есть
-    const serverMessage =
-      error?.data?.detail ||
-      error?.data?.message ||
-      error?.message ||
-      t("notFoundError");
-
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="flex flex-col items-center text-center text-red-600 gap-2">
-          <div className="text-3xl">⚠️</div>
-
-          {/* Заголовок */}
-          <p className="text-xl font-semibold">{title}</p>
-
-          {/* Сообщение сервера */}
-          <p className="text-sm text-red-500 max-w-xs">{serverMessage}</p>
-
-          {/* Сообщение браузера (для дебага) */}
-          <p className="text-xs text-gray-500 mt-2">
-            {t("errorCode")}: {error.status || t("noData")}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // ✅ FIXED: Ensure filteredTests is always an array
-  // Determine which property has the array
   const testArray = tests?.testAdmin || tests?.data || [];
 
   const filteredTests = testArray.filter((test) => {
@@ -123,10 +77,20 @@ const Tests = () => {
     setOpenTest(openTest === testId ? null : testId);
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-  if (!mounted) return null;
+  if (!mounted) return <Loading />;
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <Errors error={error} fullScreen />;
+  }
 
   return (
     <div className="space-y-6">

@@ -29,7 +29,6 @@ import {
   Toolbar,
 } from "@mui/material";
 import { useGetMeProfileQuery } from "@/store/slices/profile";
-import { useUser } from "@/hooks/useUser";
 import Errors from "@/components/error/errors";
 import Loading from "@/components/loading/loading";
 import { Delete, Edit } from "@mui/icons-material";

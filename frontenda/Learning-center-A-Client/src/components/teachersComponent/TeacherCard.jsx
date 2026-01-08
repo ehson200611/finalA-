@@ -34,6 +34,14 @@ const TeacherCard = ({
     setImageError(false);
   }, [teacher]);
 
+  useEffect(() => {
+    return () => {
+      if (localVideo && localVideo.startsWith("blob:")) {
+        URL.revokeObjectURL(localVideo);
+      }
+    };
+  }, [localVideo]);
+
   // CORRECTED TEXT HANDLING - based on your API response structure
   const getName = () => {
     if (!teacher) return "";
@@ -103,17 +111,17 @@ const TeacherCard = ({
   const getDescriptionContent = () => {
     const description = getDescription();
     const maxLength = 50;
-    
+
     // If description is empty or null
     if (!description || description.length === 0) {
       return "";
     }
-    
+
     // If description length is less than or equal to 50
     if (description.length <= maxLength) {
       return description;
     }
-    
+
     // If expanded (showing full text)
     if (isExpanded) {
       return (
@@ -128,7 +136,7 @@ const TeacherCard = ({
         </>
       );
     }
-    
+
     // If not expanded (showing truncated text)
     return (
       <>
@@ -196,7 +204,7 @@ const TeacherCard = ({
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.25 }}
-        className={`relative rounded-2xl shadow-lg overflow-hidden border mt-[20px] ${
+        className={`relative rounded-2xl shadow-lg overflow-hidden border mt-5 ${
           dark
             ? "bg-gray-900 text-white border-gray-700 hover:shadow-gray-600"
             : "bg-white text-gray-900 border-gray-200 hover:shadow-lg"
@@ -303,14 +311,21 @@ const TeacherCard = ({
             ) : null}
           </div>
 
-          <div className="flex-1 text-center lg:text-left">
+          <div className="flex-1  lg:text-left">
             <h3 className="text-lg sm:text-xl font-semibold">{title}</h3>
             <p
-              className={`text-sm sm:text-base mt-3 ${
+              className={`lg:hidden block text-sm sm:text-base mt-3 ${
                 dark ? "text-gray-300" : "text-gray-600"
               }`}
             >
               {getDescriptionContent()}
+            </p>
+            <p
+              className={`lg:block hidden text-sm sm:text-base mt-3 ${
+                dark ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
+              {getDescription()}
             </p>
           </div>
 

@@ -96,7 +96,7 @@ const WhyUs = ({ isAdmin }) => {
       </h2>
 
       <div className="grid grid-cols-2 md:grid-cols-2 gap-4 ">
-        {whyUs.map((item, index) => {
+        {whyUs?.map((item, index) => {
           const Icon = iconMap.at(index);
           return (
             <div

@@ -1,13 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import PersonIcon from "@mui/icons-material/Person";
 import { useTheme } from "next-themes";
 import {
   useGetFeedbacksQuery,
   useDeleteFeedbackMutation,
-  useUpdateFeedbackMutation,
 } from "@/store/slices/feedbackApi";
 
 import {
@@ -16,10 +13,8 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  TextField,
   Box,
   Typography,
-  CircularProgress,
 } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useGetMeProfileQuery } from "@/store/slices/profile";

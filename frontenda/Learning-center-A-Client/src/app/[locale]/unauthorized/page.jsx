@@ -16,9 +16,9 @@ export default function Unauthorized() {
       } font-sans min-h-[70vh] transition-colors duration-400 flex flex-col items-center justify-center`}
     >
       <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl text-center max-w-md">
-        <h1 className="text-3xl font-bold text-red-600 dark:text-red-400 mb-4">
+        <p className="text-3xl font-bold text-red-600 dark:text-red-400 mb-4">
           Нет доступа
-        </h1>
+        </p>
 
         <p className="text-gray-700 dark:text-gray-300 mb-6">
           У вас нет прав для просмотра этой страницы.

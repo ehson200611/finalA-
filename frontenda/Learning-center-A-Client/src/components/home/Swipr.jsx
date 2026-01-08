@@ -119,6 +119,22 @@ export default function Swipr({ isAdmin }) {
     setCurrentSlide((prev) => ({ ...prev, image: preview, file }));
   };
 
+  useEffect(() => {
+    return () => {
+      if (newSlide?.image) {
+        URL.revokeObjectURL(newSlide.image);
+      }
+    };
+  }, [newSlide?.image]);
+
+  useEffect(() => {
+    return () => {
+      if (currentSlide?.image) {
+        URL.revokeObjectURL(currentSlide.image);
+      }
+    };
+  }, [currentSlide?.image]);
+
   // ------------------- Add Slide -------------------
   const handleAdd = async () => {
     const toastId = toast.loading(t("adding"));
@@ -251,15 +267,19 @@ export default function Swipr({ isAdmin }) {
         speed={300}
         className="rounded-lg"
       >
-        {swipperData.map((slide) => (
+        {swipperData?.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div
-              style={{ backgroundImage: `url(${slide.image})` }}
-              className="relative min-h-[420px] overflow-hidden  bg-center bg-no-repeat bg-cover"
-            >
-              <div className="relative flex flex-col md:flex-row justify-between items-center gap-6 bg-black/30 p-6 text-white min-h-[420px] w-full">
+            <div className="relative min-h-[420px] overflow-hidden ">
+              <Image
+                src={slide.image}
+                alt={"slide image"}
+                fill
+                sizes="100vw"
+                className="object-cover object-center lg:object-cover"
+              />
+              <div className="relative flex bg-black/5  0 p-6 text-white min-h-[420px] w-full">
                 {/* TEXT SECTION */}
-                <div className="relative z-20 md:w-1/2 h-full">
+                <div className="relative self-end lg:self-center z-20 md:w-1/2 h-full">
                   <h2 className="text-2xl md:text-4xl font-bold mb-3">
                     {locale === "ru"
                       ? slide.name_ru

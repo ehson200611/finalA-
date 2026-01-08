@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Allow: /
+
+# Disallow admin and protected routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /profile/
+Disallow: /unauthorized/
+
+# Host
+Host: https://aplus.tj
+
+# Sitemaps
+Sitemap: https://aplus.tj/sitemap.xml

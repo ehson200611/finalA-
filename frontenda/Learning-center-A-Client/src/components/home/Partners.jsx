@@ -25,8 +25,13 @@ import Loading from "../loading/loading";
 
 export default function Partners({ isAdmin = false }) {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState("")
-  const { data: partners = [], isLoading } = useGetPartnersQuery();
+  const [mounted, setMounted] = useState("");
+  const { data: partners = [], isLoading } = useGetPartnersQuery(undefined, {
+    refetchOnMountOrArgChange: false,
+    refetchOnFocus: false,
+    refetchOnReconnect: false,
+    pollingInterval: 0,
+  });
   const [addPartner] = useAddPartnerMutation();
   const [deletePartner] = useDeletePartnerMutation();
 
@@ -40,8 +45,7 @@ export default function Partners({ isAdmin = false }) {
 
   const [deleteId, setDeleteId] = useState(null);
   const fileRef = useRef();
-  const t = useTranslations("homePage")
-
+  const t = useTranslations("homePage");
 
   const openModal = () => {
     setFile(null);
@@ -62,7 +66,7 @@ export default function Partners({ isAdmin = false }) {
     if (!selectedFile) return;
 
     if (!selectedFile.type.startsWith("image/")) {
-      toast.error(t('changeUp'));
+      toast.error(t("changeUp"));
       return;
     }
 
@@ -75,7 +79,7 @@ export default function Partners({ isAdmin = false }) {
 
   const confirmUpload = async () => {
     if (!file) {
-      toast.error(t('firstChange'));
+      toast.error(t("firstChange"));
       return;
     }
 
@@ -86,33 +90,31 @@ export default function Partners({ isAdmin = false }) {
       formData.append("image", file);
 
       await addPartner(formData).unwrap();
-      toast.success(t('together'));
+      toast.success(t("together"));
       closeModal();
     } catch (err) {
       console.error(err);
-      toast.error(t('addError'));
+      toast.error(t("addError"));
     } finally {
       setIsUploading(false);
     }
   };
 
-  // delete confirm
   const confirmDelete = async () => {
     try {
-      const t = toast.loading(t('deleting'));
       await deletePartner(deleteId).unwrap();
-      toast.success(t('deleted'), { id: t });
+      toast.success(t("deleted"));
     } catch {
-      toast.error(t('deleteError'));
-    } finally {
-      setDeleteId(null);
+      toast.error(t("deleteError"));
     }
+    setDeleteId(null);
   };
-   useEffect(() => {
-      setMounted(true)
-    }, []);
 
-  if(!mounted) return null
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const finalLogos = [...partners, ...partners]; // duplicate for marquee effect
 
@@ -121,11 +123,11 @@ export default function Partners({ isAdmin = false }) {
   return (
     <div className="py-8">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl font-bold">{t('outFre')}</h1>
+        <p className="text-3xl font-bold">{t("outFre")}</p>
 
         {isAdmin && (
           <Button variant="contained" onClick={openModal}>
-            + {t('add')}
+            + {t("add")}
           </Button>
         )}
       </div>
@@ -146,7 +148,6 @@ export default function Partners({ isAdmin = false }) {
                 src={item.image}
                 className="object-contain w-full h-full"
               />
-
               {hovered === item.id && isAdmin && (
                 <button
                   onClick={() => setDeleteId(item.id)}
@@ -163,7 +164,7 @@ export default function Partners({ isAdmin = false }) {
       {/* MODAL UPLOAD */}
       <Dialog open={modalOpen} onClose={closeModal} fullWidth maxWidth="sm">
         <DialogTitle>
-          {t('addPartner')}
+          {t("addPartner")}
           <IconButton
             onClick={closeModal}
             sx={{ position: "absolute", right: 14, top: 14 }}
@@ -206,7 +207,7 @@ export default function Partners({ isAdmin = false }) {
                 fontWeight: "bold",
               }}
             >
-              {t('change')}
+              {t("change")}
             </Box>
           )}
         </DialogContent>
@@ -218,14 +219,14 @@ export default function Partners({ isAdmin = false }) {
             justifyContent: "space-between",
           }}
         >
-          <Button onClick={closeModal}>{t('cancel')}</Button>
+          <Button onClick={closeModal}>{t("cancel")}</Button>
           <Button
             disabled={!preview || isUploading}
             onClick={confirmUpload}
             variant="contained"
             color="success"
           >
-            {t('add')}
+            {t("add")}
           </Button>
         </DialogActions>
       </Dialog>
@@ -234,14 +235,14 @@ export default function Partners({ isAdmin = false }) {
       {deleteId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-5 rounded-lg w-80 text-center">
-            <h2 className="font-semibold text-lg mb-3">{t('deletePartner')}</h2>
+            <h2 className="font-semibold text-lg mb-3">{t("deletePartner")}</h2>
             <div className="flex gap-3">
               <Button
                 fullWidth
                 variant="outlined"
                 onClick={() => setDeleteId(null)}
               >
-                {t('cancel')}
+                {t("cancel")}
               </Button>
               <Button
                 fullWidth
@@ -249,7 +250,7 @@ export default function Partners({ isAdmin = false }) {
                 color="error"
                 onClick={confirmDelete}
               >
-                {t('delete')}
+                {t("delete")}
               </Button>
             </div>
           </div>

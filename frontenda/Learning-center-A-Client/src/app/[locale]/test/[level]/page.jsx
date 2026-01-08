@@ -182,9 +182,9 @@ export default function LevelPage() {
               <ArrowLeftCircle size={20} />
             </Button>
           </Link>
-          <h1 className="text-2xl font-bold">
+          <p className="text-2xl font-bold">
             {level.toUpperCase()} {t("2")}
-          </h1>
+          </p>
         </div>
 
         {!finished ? (

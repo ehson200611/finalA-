@@ -34,7 +34,16 @@ import Loading from "../loading/loading";
 const Courses = ({ isAdmin }) => {
   const { theme } = useTheme();
   const t = useTranslations("homePage");
-  const { data: courses, isLoading, refetch } = useGetCoursesQuery();
+  const {
+    data: courses,
+    isLoading,
+    refetch,
+  } = useGetCoursesQuery(undefined, {
+    refetchOnMountOrArgChange: false,
+    refetchOnFocus: false,
+    refetchOnReconnect: false,
+    pollingInterval: 0,
+  });
   const [updateCourse, { isLoading: updating }] = useUpdateCourseMutation();
 
   const [mounted, setMounted] = useState(false);
@@ -77,10 +86,9 @@ const Courses = ({ isAdmin }) => {
     }
   };
 
-  if(!mounted) return null
+  if (!mounted) return null;
 
-  if ( isLoading)
-    return <Loading />
+  if (isLoading) return <Loading />;
 
   if (!courses || courses.length === 0)
     return (
@@ -93,7 +101,7 @@ const Courses = ({ isAdmin }) => {
         <h2 className="w-full  mx-auto md:text-5xl text-2xl leading-tight font-bold">
           {t("coursesTitle")}
         </h2>
-        <p className="text-sm md:text-[20px] font-medium  mx-auto">
+        <p className="text-sm md:text-xl font-medium  mx-auto">
           {t("coursesDesc")}
         </p>
       </div>
@@ -113,7 +121,7 @@ const Courses = ({ isAdmin }) => {
               <button
                 key={course.id}
                 onClick={() => setSelectedCourse(course)}
-                className={`w-full text-[20px] text-left p-4  rounded-lg transition-all duration-300 shadow-lg ${
+                className={`w-full text-xl text-left p-4  rounded-lg transition-all duration-300 shadow-lg ${
                   selectedCourse?.id === course.id
                     ? theme === "dark"
                       ? "bg-gray-500 text-white"
@@ -133,10 +141,7 @@ const Courses = ({ isAdmin }) => {
           </div>
 
           {selectedCourse && (
-            <div
-              style={{ backgroundImage: `url(${selectedCourse.image})` }}
-              className="w-2/3 relative rounded-lg overflow-hidden bg-cover bg-center"
-            >
+            <div className="w-2/3 relative rounded-lg overflow-hidden">
               {isAdmin && (
                 <Box
                   sx={{ position: "absolute", top: 10, right: 10, zIndex: 20 }}
@@ -151,11 +156,17 @@ const Courses = ({ isAdmin }) => {
                   </Tooltip>
                 </Box>
               )}
-
-              <div className="z-10 w-full h-full bg-black/50 text-white space-y-4 pt-28">
+              <Image
+                src={selectedCourse.image}
+                alt={"slide image"}
+                fill
+                sizes="100vw"
+                className="object-cover object-center lg:object-cover"
+              />
+              <div className="absolute z-10 w-full h-full bg-black/50 text-white space-y-4 pt-28">
                 <div className="space-y-5 p-10">
                   <h3
-                    className={`lg:text-3xl text-2xl font-bold w-[400px] font-serif`}
+                    className={`lg:text-3xl text-2xl font-bold lg:w-[400px] w-[380px] font-serif`}
                   >
                     {locale === "en"
                       ? selectedCourse.title_en
@@ -177,6 +188,56 @@ const Courses = ({ isAdmin }) => {
             </div>
           )}
         </div>
+      </div>
+
+      {/* Мобильная версия */}
+      <div className="relative lg:hidden md:hidden flex gap-5 py-5 overflow-x-scroll scrollbar-hide">
+        {courses?.map((course) => (
+          <div
+            className="w-[300px] h-[50vh] relative rounded-lg overflow-hidden shrink-0"
+            key={course.id}
+          >
+            {isAdmin && (
+              <Box
+                sx={{ position: "absolute", top: 10, right: 10, zIndex: 20 }}
+              >
+                <Tooltip title={t("update")}>
+                  <button
+                    className=" bg-white/50 w-10 h-10 rounded-full hover:bg-white/10 transition"
+                    onClick={() => setEditModalOpen(true)}
+                  >
+                    <EditIcon fontSize="small" />
+                  </button>
+                </Tooltip>
+              </Box>
+            )}
+            <Image
+              src={course.image}
+              alt={"slide image"}
+              fill
+              sizes="100vw"
+              className="object-cover object-center lg:object-cover"
+            />
+            <div className="absolute z-10 w-full h-full bg-black/50 text-white space-y-4 ">
+              <div className="space-y-5 px-2 pt-28 text-center">
+                <h3 className={`text-xl font-extrabold font-serif`}>
+                  {locale === "en"
+                    ? course.title_en
+                    : locale === "tj"
+                    ? course.title_tj
+                    : course.title_ru}
+                </h3>
+                <p className={`text-base font-medium `}>
+                  {locale === "en"
+                    ? course.description_en
+                    : locale === "tj"
+                    ? course.description_tj
+                    : course.description_ru}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Модалка для редактирования курса */}
@@ -211,6 +272,14 @@ function CourseDialog({ open, slide, setSlide, onClose, onSubmit, loading }) {
       image: URL.createObjectURL(file),
     }));
   };
+
+  useEffect(() => {
+    return () => {
+      if (slide?.image) {
+        URL.revokeObjectURL(slide.image);
+      }
+    };
+  }, [slide?.image]);
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
@@ -337,7 +406,7 @@ function CourseDialog({ open, slide, setSlide, onClose, onSubmit, loading }) {
           onClick={onClose}
           variant="outlined"
           startIcon={<CloseIcon />}
-          sx={{ textTransform: "none" }}
+          sx={{ textTransform: "none", fontSize: 12 }}
         >
           {t("cancel")}
         </Button>
@@ -346,11 +415,7 @@ function CourseDialog({ open, slide, setSlide, onClose, onSubmit, loading }) {
           variant="contained"
           startIcon={<SaveIcon />}
           disabled={loading}
-          sx={{
-            textTransform: "none",
-            bgcolor: "#2563EB",
-            "&:hover": { bgcolor: "#1E40AF" },
-          }}
+          sx={{ textTransform: "none", fontSize: 12 }}
         >
           {loading ? (
             <CircularProgress size={18} sx={{ color: "#fff" }} />

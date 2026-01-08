@@ -18,8 +18,6 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Tabs,
-  Tab,
   TextField,
   Box,
   ToggleButtonGroup,
@@ -31,32 +29,112 @@ import PublicIcon from "@mui/icons-material/Public";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "../loading/loading";
 
-const fileToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-    reader.readAsDataURL(file);
-  });
-};
+import { useSendSmsMutation } from "@/store/slices/auth";
+import { useAddNotificationMutation } from "@/store/slices/notificationAdminApi";
 
 export default function Consultatsiya({ isAdmin }) {
   const t = useTranslations("homePage");
-
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const { data: infoSwiper, isLoading, isError } = useGetInfoSwiperQuery();
-  const [updateInfoSwiper, { isLoading: isSaving }] =
-    useUpdateInfoSwiperMutation();
   const locale = useLocale();
 
+  const { theme } = useTheme();
+
+  // ==== СТЕЙТЫ ДЛЯ ФОРМЫ ====
+  const [step, setStep] = useState(1);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
+  const {
+    data: infoSwiper,
+    isLoading,
+    isError,
+  } = useGetInfoSwiperQuery(undefined, {
+    refetchOnMountOrArgChange: false,
+    refetchOnFocus: false,
+    refetchOnReconnect: false,
+    pollingInterval: 0,
+  });
+  const [updateInfoSwiper, { isLoading: isSaving }] =
+    useUpdateInfoSwiperMutation();
+  const [sendSms] = useSendSmsMutation();
+  const [addNotification] = useAddNotificationMutation();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [editData, setEditData] = useState(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (editData?.preview) {
+        URL.revokeObjectURL(editData.preview);
+      }
+    };
+  }, [editData?.preview]);
+
+  // ==== ФУНКЦИИ ДЛЯ ФОРМЫ КОНСУЛЬТАЦИИ/ОТПРАВКИ СМС ====
+
+  const handleSendSms = async () => {
+    if (!name.trim() || !phone.trim()) {
+      toast.error(t("enterNamePhone"));
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await sendSms({
+        phoneNumber: phone,
+        purpose: "notification",
+      }).unwrap();
+
+      toast.success(t("smsSent"));
+      setStep(2);
+    } catch (err) {
+      toast.error(t("smsError"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleVerifyCode = async () => {
+    if (!code.trim()) {
+      toast.error(t("enterCode"));
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await addNotification({
+        name,
+        title: phone,
+        type: "success",
+        code,
+        status: "unread",
+      }).unwrap();
+
+      toast.success(t("notificationSent"));
+      setStep(3);
+
+      setTimeout(() => {
+        setStep(1);
+        setName("");
+        setPhone("");
+        setCode("");
+      }, 3000);
+    } catch (err) {
+      toast.error(t("notificationError"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ==== ФУНКЦИИ ДЛЯ РЕДАКТИРОВАНИЯ СЛАЙДОВ ====
 
   const openEditModal = (slide) => {
     setEditData({
@@ -105,7 +183,7 @@ export default function Consultatsiya({ isAdmin }) {
     setEditData((prev) => ({
       ...prev,
       backgroundImage: file,
-      preview: URL.createObjectURL(file), // для показа изображения
+      preview: URL.createObjectURL(file),
     }));
   };
 
@@ -138,7 +216,7 @@ export default function Consultatsiya({ isAdmin }) {
   const [lang, setLang] = useState("ru");
 
   if (!mounted) return null;
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading />;
   if (isError)
     return (
       <div className="text-center py-8 text-red-500">{t("errorDownData")}</div>
@@ -177,10 +255,7 @@ export default function Consultatsiya({ isAdmin }) {
         >
           {infoSwiper.map((slide, index) => (
             <SwiperSlide key={slide.id}>
-              <div
-                style={{ backgroundImage: `url(${slide.background_image})` }}
-                className="relative"
-              >
+              <div className="relative  rounded-lg h-full w-full flex items-center justify-center">
                 {/* Кнопка редактирования появляется при hover */}
                 {isAdmin && (
                   <button
@@ -191,13 +266,21 @@ export default function Consultatsiya({ isAdmin }) {
                   </button>
                 )}
 
+                <Image
+                  src={slide.background_image}
+                  alt={"slide image"}
+                  fill
+                  sizes="100vw"
+                  className="object-cover object-center lg:object-cover"
+                />
+
                 <div
                   className={`flex flex-col items-center justify-center  p-4 md:p-6 h-auto min-h-[400px] relative overflow-hidden ${
                     slide.background_image
                       ? ""
                       : theme === "dark"
                       ? "bg-gray-800"
-                      : "bg-gradient-to-r from-[#00CED1] to-[#40E0D0]"
+                      : "bg-linear-to-r from-[#00CED1] to-[#40E0D0]"
                   }`}
                 >
                   {/* Затемнение для лучшей читаемости текста */}
@@ -215,7 +298,7 @@ export default function Consultatsiya({ isAdmin }) {
                         : "text-white"
                     }`}
                   >
-                    <h1
+                    <p
                       className={`text-2xl md:text-3xl font-bold mb-4 text-center leading-tight `}
                     >
                       {locale === "ru"
@@ -223,7 +306,7 @@ export default function Consultatsiya({ isAdmin }) {
                         : locale === "en"
                         ? slide.title_en
                         : slide.title_tj}
-                    </h1>
+                    </p>
                     <p
                       className={`text-base md:text-lg text-center leading-relaxed `}
                     >
@@ -243,12 +326,13 @@ export default function Consultatsiya({ isAdmin }) {
 
       {/* Форма консультации */}
       <div
-        className={`border p-5 lg:max-w-[600px]  md:max-w-[750px]  max-w-[400px] h-[400px] m-auto flex flex-col justify-around  rounded-lg ${
+        className={`border p-5 lg:max-w-[600px] md:max-w-[750px] max-w-[400px] h-auto flex flex-col justify-between rounded-lg ${
           theme === "dark"
             ? "bg-[#042834] border-gray-700 text-white"
             : "bg-white border-gray-300 text-black"
         }`}
       >
+        {/* Заголовок */}
         <div className="flex flex-col items-start gap-[15px]">
           <h6
             className={`text-3xl text-center m-auto font-bold ${
@@ -258,7 +342,7 @@ export default function Consultatsiya({ isAdmin }) {
             {t("freeConsultTitle")}
           </h6>
           <p
-            className={`text-[17px] m-auto text-center font-[500] ${
+            className={`text-[17px] lg:mb-0 mb-6 text-center font-medium ${
               theme === "dark" ? "text-gray-400" : "text-gray-600"
             }`}
           >
@@ -266,36 +350,99 @@ export default function Consultatsiya({ isAdmin }) {
           </p>
         </div>
 
-        <form className="flex flex-col items-center gap-[25px]">
-          <input
-            className={`border w-[95%] py-[10px] rounded-md px-[25px] ${
-              theme === "dark"
-                ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                : "bg-white border-gray-300 text-black placeholder-gray-600"
-            }`}
-            type="text"
-            placeholder={t("formName")}
-          />
-          <input
-            className={`border w-[95%] py-[10px] rounded-md px-[25px] ${
-              theme === "dark"
-                ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
-                : "bg-white border-gray-300 text-black placeholder-gray-600"
-            }`}
-            type="tel"
-            placeholder={t("formPhone")}
-          />
-
-          <button
-            className={`w-[95%] border cursor-pointer px-[60px] py-[10px] rounded-md md:px-[170px] ${
-              theme === "dark"
-                ? "bg-gray-700 hover:bg-gray-600 text-white border-gray-600"
-                : "bg-blue-500 hover:bg-blue-600 text-white border-blue-500"
-            }`}
+        {/* === STEP 1 — ВВОД ИМЕНИ И ТЕЛЕФОНА === */}
+        {step === 1 && (
+          <form
+            className="flex flex-col items-center gap-[25px]"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSendSms();
+            }}
           >
-            {t("formSubmit")}
-          </button>
-        </form>
+            <input
+              className={`border w-[95%] py-2.5 rounded-md px-[25px] ${
+                theme === "dark"
+                  ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                  : "bg-white border-gray-300 text-black placeholder-gray-600"
+              }`}
+              type="text"
+              placeholder={t("formName")}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              disabled={loading}
+            />
+
+            <input
+              className={`border w-[95%] py-2.5 rounded-md px-[25px] ${
+                theme === "dark"
+                  ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                  : "bg-white border-gray-300 text-black placeholder-gray-600"
+              }`}
+              type="tel"
+              placeholder={t("formPhone")}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              disabled={loading}
+            />
+
+            <button
+              className={`w-[95%] border cursor-pointer px-15 py-2.5 rounded-md md:px-[170px] ${
+                theme === "dark"
+                  ? "bg-gray-700 hover:bg-gray-600 text-white border-gray-600"
+                  : "bg-blue-500 hover:bg-blue-600 text-white border-blue-500"
+              }`}
+              disabled={loading}
+            >
+              {loading ? t("sending") : t("formSubmit")}
+            </button>
+          </form>
+        )}
+
+        {/* === STEP 2 — ВВОД КОДА === */}
+        {step === 2 && (
+          <div className="flex flex-col gap-4 mt-5">
+            <p className="text-center">{t("enterSms")}</p>
+
+            <input
+              className={`border w-[95%] py-2.5 rounded-md px-[25px] mx-auto ${
+                theme === "dark"
+                  ? "bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                  : "bg-white border-gray-300 text-black placeholder-gray-600"
+              }`}
+              type="text"
+              maxLength={6}
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+
+            <button
+              onClick={handleVerifyCode}
+              disabled={loading || code.length < 4}
+              className={`w-[95%] mx-auto border cursor-pointer px-15 py-2.5 rounded-md md:px-[170px] ${
+                theme === "dark"
+                  ? "bg-green-700 hover:bg-green-600 text-white border-green-600"
+                  : "bg-green-500 hover:bg-green-600 text-white border-green-500"
+              }`}
+            >
+              {loading ? t("loading") : t("confirmCode")}
+            </button>
+
+            <button
+              onClick={handleSendSms}
+              disabled={loading}
+              className="text-blue-500 hover:text-blue-600 underline text-center"
+            >
+              {t("resendCode")}
+            </button>
+          </div>
+        )}
+
+        {/* === STEP 3 — УСПЕХ === */}
+        {step === 3 && (
+          <div className="text-center text-green-500 font-semibold py-5">
+            {t("successMessage")}
+          </div>
+        )}
       </div>
 
       {/* Модальное окно для редактирования одного слайда */}
@@ -414,4 +561,3 @@ export default function Consultatsiya({ isAdmin }) {
     </div>
   );
 }
-

@@ -165,18 +165,19 @@ function Blogs() {
   }
 
   if (isLoading) return <Loading />;
-
   return (
     <div
-      className={`lg:min-h-screen p-10 px-4 ${
-        theme === "dark" ? "bg-gray-900 text-white" : "bg-slate-50"
-      }`}
+      className={`${
+        theme === "dark"
+          ? "bg-[#0a1a23] text-white"
+          : "bg-linear-to-br from-[#e6f9ff] via-[#f4fbfc] to-[#e8f7f9] text-[#02202B]"
+      } font-sans min-h-screen transition-colors duration-400`}
     >
-      <div className="max-w-xl mx-auto space-y-8">
+      <div className="max-w-7xl mx-auto space-y-8">
         <SectionOne title={t("blogs")} description={t("discover")} />
 
         {isAdmin && (
-          <div className="flex justify-end mb-6">
+          <div className="flex justify-end mb-6 px-5">
             <Button
               variant="contained"
               color="primary"
@@ -190,7 +191,7 @@ function Blogs() {
           </div>
         )}
 
-        <div className="flex flex-col gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pb-10 px-5">
           {blogsData?.map((blog) => {
             const isVideo = blog.media.endsWith(".mp4");
             const isOpen = expanded.has(blog.id);
@@ -202,19 +203,19 @@ function Blogs() {
                   theme === "dark" ? "bg-gray-800" : "bg-white"
                 }`}
               >
-                <div className="w-full max-h-[60vh] sm:max-h-[50vh] md:max-h-[60vh] lg:max-h-[70vh] xl:max-h-[60vh] overflow-hidden rounded-xl">
+                <div className="w-full max-h-[60vh] sm:max-h-[50vh] md:max-h-[60vh] lg:max-h-[70vh] xl:max-h-[60vh] overflow-hidden rounded-t-xl">
                   {isVideo ? (
                     <video
                       src={blog.media}
                       controls
-                      className="w-full h-auto max-h-[70vh] object-contain bg-black rounded-xl"
+                      className="w-full h-auto max-h-[70vh] object-contain bg-black rounded-t-xl"
                       onPlay={() => handleView(blog)}
                     />
                   ) : (
                     <img
                       src={blog.media}
                       alt={blog.title}
-                      className="w-full h-auto max-h-[70vh] object-contain bg-black rounded-xl"
+                      className="w-full h-auto max-h-[70vh] object-contain bg-black rounded-t-xl"
                       onClick={() => handleView(blog)}
                     />
                   )}
