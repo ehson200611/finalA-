@@ -69,7 +69,7 @@ const AboutState = ({ isAdmin }) => {
   ];
 
   const handleEditClick = (item) => {
-    setEditingId(item.order);
+    setEditingId(item.id);
     setOpen(true);
     setEditValue(item.number);
   };
@@ -84,7 +84,7 @@ const AboutState = ({ isAdmin }) => {
     if (!editingId) return;
 
     try {
-      await updateAbout({ order: aboutItem.order, number: editValue }).unwrap();
+      await updateAbout({ id: editingId, number: editValue }).unwrap();
       refetch();
       handleClose();
     } catch (err) {

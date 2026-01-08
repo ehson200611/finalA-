@@ -45,14 +45,14 @@ const VacancyList = ({
                 }`}
                 key={e.id}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
                   {e.image && (
                     <SafeImage
                       src={e.image}
                       alt={e.name?.[lang] || "vacancy"}
-                      width={50}
-                      height={50}
-                      className="rounded"
+                      width={80}
+                      height={80}
+                      className="rounded-full"
                       style={{ width: "auto", height: "auto" }}
                     />
                   )}
