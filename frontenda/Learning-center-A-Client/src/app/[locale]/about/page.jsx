@@ -130,24 +130,24 @@ const AboutPage = () => {
         </section>
 
         {/* Team */}
-        <section
-          className={`py-20 md:py-28 bg-linear-to-br ${
-            theme == "dark"
-              ? "from-slate-900 to-slate-800"
-              : "from-slate-50 to-blue-50"
-          }`}
-        >
+        <section className={`py-20 md:py-28 bg-linear-to-br `}>
           <div className="container mx-auto px-4">
             <div className="max-w-[1000px] mx-auto text-center">
               {/* Header with decorative elements */}
               <div className="relative mb-12">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-black rounded-full"></div>
-                <h2
-                  className={`text-4xl lg:text-5xl font-bold text-black  bg-clip-text mb-6`}
-                >
+                <div
+                  className={`w-24 mx-auto h-1 ${
+                    theme == "dark" ? "bg-slate-400" : "bg-slate-600"
+                  } rounded-full mb-6`}
+                ></div>
+                <h2 className={`text-4xl lg:text-5xl font-bold  bg-clip-text mb-10`}>
                   {t("teamTitle")}
                 </h2>
-                <div className="w-24 h-1 bg-black rounded-full mx-auto"></div>
+                <div
+                  className={`w-24 mx-auto h-1 ${
+                    theme == "dark" ? "bg-slate-400" : "bg-slate-600"
+                  } rounded-full mb-6`}
+                ></div>
               </div>
 
               {/* Content cards */}
