@@ -7,7 +7,7 @@ set -e
 
 SERVER="root@89.23.100.163"
 SERVER_PASS="p@wi^w59YZLMyN"
-GITHUB_REPO_URL=""
+GITHUB_REPO_URL="https://github.com/ehson200611/finalA-.git"
 
 echo "=========================================="
 echo "  КЛОНИРОВАНИЕ ПРОЕКТА НА СЕРВЕР"
@@ -21,13 +21,7 @@ if ! command -v sshpass &> /dev/null; then
     exit 1
 fi
 
-# Запрашиваем URL репозитория
-if [ -z "$GITHUB_REPO_URL" ]; then
-    echo "Введите URL вашего GitHub репозитория:"
-    echo "Пример: https://github.com/username/repository.git"
-    read -r GITHUB_REPO_URL
-fi
-
+# Проверяем, что URL указан
 if [ -z "$GITHUB_REPO_URL" ]; then
     echo "❌ Ошибка: URL репозитория не указан!"
     exit 1
