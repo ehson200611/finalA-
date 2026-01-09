@@ -29,10 +29,10 @@ export const aboutApi = createApi({
     }),
     updateAbout: builder.mutation({
       query: (updatedAbout) => ({
-        url: `stats/${updatedAbout.order}/`,
+        url: `stats/${updatedAbout.id}/`,
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: updatedAbout,
+        body: {number: updatedAbout.number}
       }),
       invalidatesTags: ["About"],
     }),

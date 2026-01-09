@@ -24,7 +24,6 @@ import {
   useGetVacancyWorkQuery,
   useDeleteVacancyWorkMutation,
 } from "@/store/slices/vacancyWorksApi";
-import { useGetMeProfileQuery } from "@/store/slices/profile";
 import Loading from "@/components/loading/loading";
 
 const Resume = () => {
@@ -34,7 +33,6 @@ const Resume = () => {
 
   // API hooks
   const { data: resumes, isLoading, error, refetch } = useGetVacancyWorkQuery();
-  const { data: meProfile } = useGetMeProfileQuery();
 
   const [deleteResume, { isLoading: isDeleting, error: deleteError }] =
     useDeleteVacancyWorkMutation();
@@ -149,12 +147,8 @@ const Resume = () => {
     });
   };
 
-  const isAdmin = meProfile?.role === "speradmin";
-
   return (
     <div className="space-y-6">
-     
-
       <Loading />
 
       {/* Header Section */}
@@ -321,15 +315,14 @@ const Resume = () => {
                 >
                   {t("submitted") || "Submitted"}
                 </th>
-                {isAdmin && (
-                  <th
-                    className={`px-6 py-3 text-right text-xs font-medium ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-500"
-                    } uppercase tracking-wider`}
-                  >
-                    {t("actions") || "Actions"}
-                  </th>
-                )}
+
+                <th
+                  className={`px-6 py-3 text-right text-xs font-medium ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-500"
+                  } uppercase tracking-wider`}
+                >
+                  {t("actions") || "Actions"}
+                </th>
               </tr>
             </thead>
             <tbody
@@ -428,8 +421,7 @@ const Resume = () => {
                         </span>
                       </div>
                     </td>
-                    {isAdmin && (
-                      <td className="px-6 py-4">
+                    <td className="px-6 py-4">
                       <div className="flex justify-end gap-2">
                         <button
                           onClick={() => openDialog(resume.id)}
@@ -447,7 +439,6 @@ const Resume = () => {
                         </button>
                       </div>
                     </td>
-                    )}
                   </tr>
                 ))
               ) : (

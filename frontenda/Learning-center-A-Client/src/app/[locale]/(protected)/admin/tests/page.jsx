@@ -404,10 +404,10 @@ const Tests = () => {
                                     return (
                                       <div
                                         key={questionId}
-                                        className={`p-3 rounded border ${
+                                        className={`p-3 rounded border text-black ${
                                           isCorrect
-                                            ? "border-green-200 bg-green-50 dark:bg-green-900/20 dark:border-green-800"
-                                            : "border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800"
+                                            ? "border-green-200 bg-green-50 "
+                                            : "border-red-200 bg-red-50"
                                         }`}
                                       >
                                         <div className="flex justify-between items-start">

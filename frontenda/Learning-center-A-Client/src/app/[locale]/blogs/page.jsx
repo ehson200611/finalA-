@@ -230,8 +230,7 @@ function Blogs() {
                         }`}
                       >
                         {blog.author || "Admin"} •{" "}
-                        {new Date(blog.created_at).toLocaleDateString()} •{" "}
-                        {viewsMap[blog.id] || 0} views
+                        {new Date(blog.created_at).toLocaleDateString()}
                       </p>
                     </div>
 
@@ -269,17 +268,13 @@ function Blogs() {
                   </div>
 
                   <h2
-                    className={`text-xl font-bold ${
-                      theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
+                    className={`text-2xl font-bold`}
                   >
                     {blog.title}
                   </h2>
 
                   <p
-                    className={`text-gray-700 ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-700"
-                    }`}
+                    className={``}
                   >
                     {isOpen || blog.description.length <= 50
                       ? blog.description
