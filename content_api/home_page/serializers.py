@@ -52,7 +52,7 @@ class PartnerSerializer(serializers.ModelSerializer):
 class StatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stat
-        fields = ['order', 'number'] 
+        fields = ['id', 'number'] 
 
 class WhyUsItemSerializer(serializers.ModelSerializer):
     class Meta:

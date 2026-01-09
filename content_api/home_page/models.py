@@ -66,12 +66,11 @@ class WhyUsItem(models.Model):
 
 # --- STATISTICS ---
 class Stat(models.Model):
-    order = models.PositiveIntegerField(default=0)
+    id = models.AutoField(primary_key=True)
     number = models.CharField(max_length=50)
-  
 
     class Meta:
-        ordering = ['order']
+        ordering = ['id']
 
     def __str__(self):
         return self.number
