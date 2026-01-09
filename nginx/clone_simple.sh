@@ -1,21 +1,11 @@
 #!/bin/bash
-# Удаление старого проекта и клонирование нового из GitHub
-# Выполните на сервере: bash clone_fresh_from_github.sh
+# Упрощенное клонирование без резервного копирования
+# Выполните на сервере: bash clone_simple.sh
 
 set -e
 
-# ============================================
-# НАСТРОЙКИ - ИЗМЕНИТЕ ЭТИ ПАРАМЕТРЫ
-# ============================================
-GITHUB_REPO_URL="https://github.com/ehson200611/finalA-.git"  # URL вашего GitHub репозитория
+GITHUB_REPO_URL="https://github.com/ehson200611/finalA-.git"
 PROJECT_DIR="/var/www/aplus/finalA-"
-BACKUP_DIR="/var/www/aplus/backup_$(date +%Y%m%d_%H%M%S)"
-
-# Проверяем, что URL указан
-if [ -z "$GITHUB_REPO_URL" ]; then
-    echo "❌ Ошибка: URL репозитория не указан!"
-    exit 1
-fi
 
 echo "=========================================="
 echo "  КЛОНИРОВАНИЕ ПРОЕКТА ИЗ GITHUB"
@@ -34,54 +24,30 @@ pkill -f "next start" 2>/dev/null || true
 echo "✓ Сервисы остановлены"
 echo ""
 
-# Создаем резервную копию (если проект существует)
+# Удаляем старый проект (БЕЗ резервного копирования)
 if [ -d "$PROJECT_DIR" ]; then
-    echo "2. Создание резервной копии..."
-    echo "   Это может занять некоторое время..."
-    sudo mkdir -p "$(dirname $BACKUP_DIR)"
-    
-    # Используем rsync для более быстрого копирования с прогрессом
-    if command -v rsync &> /dev/null; then
-        sudo rsync -av --progress "$PROJECT_DIR/" "$BACKUP_DIR/" 2>&1 | head -20
-    else
-        # Если rsync нет, используем cp с индикацией
-        echo "   Копирование файлов..."
-        sudo cp -r "$PROJECT_DIR" "$BACKUP_DIR" &
-        CP_PID=$!
-        # Показываем прогресс каждые 2 секунды
-        while kill -0 $CP_PID 2>/dev/null; do
-            echo "   Копирование... (процесс выполняется)"
-            sleep 2
-        done
-        wait $CP_PID
-    fi
-    echo "✓ Резервная копия создана: $BACKUP_DIR"
-    echo ""
-    
-    # Удаляем старый проект
-    echo "3. Удаление старого проекта..."
+    echo "2. Удаление старого проекта..."
     sudo rm -rf "$PROJECT_DIR"
     echo "✓ Старый проект удален"
     echo ""
 else
-    echo "2. Старый проект не найден, пропускаем резервное копирование"
+    echo "2. Старый проект не найден"
     echo ""
 fi
 
 # Создаем директорию для проекта
-echo "4. Создание директории..."
+echo "3. Создание директории..."
 sudo mkdir -p "$(dirname $PROJECT_DIR)"
 cd "$(dirname $PROJECT_DIR)"
 echo "✓ Директория создана"
 echo ""
 
 # Клонируем проект из GitHub
-echo "5. Клонирование проекта из GitHub..."
+echo "4. Клонирование проекта из GitHub..."
 if [ -d "$(basename $PROJECT_DIR)" ]; then
     sudo rm -rf "$(basename $PROJECT_DIR)"
 fi
 
-# Клонируем репозиторий
 git clone "$GITHUB_REPO_URL" "$(basename $PROJECT_DIR)" || {
     echo "❌ Ошибка при клонировании репозитория!"
     echo "Проверьте URL и права доступа к репозиторию."
@@ -92,14 +58,14 @@ echo "✓ Проект клонирован"
 echo ""
 
 # Настраиваем права доступа
-echo "6. Настройка прав доступа..."
+echo "5. Настройка прав доступа..."
 sudo chown -R root:root "$PROJECT_DIR"
 sudo chmod -R 755 "$PROJECT_DIR"
 echo "✓ Права настроены"
 echo ""
 
 # Настраиваем Django
-echo "7. Настройка Django..."
+echo "6. Настройка Django..."
 cd "$PROJECT_DIR/content_api"
 
 # Создаем виртуальное окружение
@@ -129,7 +95,7 @@ echo "✓ Django настроен"
 echo ""
 
 # Настраиваем Next.js
-echo "8. Настройка Next.js..."
+echo "7. Настройка Next.js..."
 cd "$PROJECT_DIR/frontenda/Learning-center-A-Client"
 
 # Устанавливаем зависимости
@@ -146,7 +112,7 @@ echo "✓ Next.js настроен"
 echo ""
 
 # Настраиваем systemd сервисы
-echo "9. Настройка systemd сервисов..."
+echo "8. Настройка systemd сервисов..."
 cd "$PROJECT_DIR/nginx"
 
 # Копируем сервисы
@@ -178,7 +144,7 @@ echo "✓ Systemd сервисы настроены"
 echo ""
 
 # Настраиваем Nginx
-echo "10. Настройка Nginx..."
+echo "9. Настройка Nginx..."
 if [ -f "$PROJECT_DIR/nginx/aplus" ]; then
     sudo cp "$PROJECT_DIR/nginx/aplus" /etc/nginx/sites-available/
     sudo sed -i "s|/var/www/aplus/finalA-|$PROJECT_DIR|g" /etc/nginx/sites-available/aplus
@@ -198,9 +164,5 @@ echo "Проект успешно клонирован и настроен!"
 echo ""
 echo "Проверьте статус сервисов:"
 echo "  sudo systemctl status aplus-django aplus-nextjs nginx"
-echo ""
-if [ -d "$BACKUP_DIR" ]; then
-    echo "Резервная копия сохранена в: $BACKUP_DIR"
-fi
 echo ""
 
